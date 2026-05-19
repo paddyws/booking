@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Stay | Book Your Getaway</title>
+  <style>
+    :root {
+      --bg: #fbfaf8;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --accent: #0f766e;
+      --accent-dark: #115e59;
+      --soft: #e7f4f1;
+      --border: #e5e7eb;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(251, 250, 248, 0.82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.7);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.2rem;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #22c55e);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 22px;
+      background: var(--accent);
+      color: white;
+      font-weight: 750;
+      cursor: pointer;
+      transition: 0.2s ease;
+      box-shadow: 0 10px 24px rgba(15, 118, 110, 0.22);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--accent-dark);
+    }
+
+    .button.secondary {
+      background: white;
+      color: var(--text);
+      box-shadow: none;
+      border: 1px solid var(--border);
+    }
+
+    .hero {
+      padding: 64px 0 36px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--accent-dark);
+      font-weight: 750;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 5.4rem);
+      line-height: 0.96;
+      letter-spacing: -0.07em;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 590px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px;
+      box-shadow: var(--shadow);
+      transform: rotate(1deg);
+    }
+
+    .hero-photo {
+      height: 520px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80') center/cover;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .floating-card {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-radius: 22px;
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .floating-card strong {
+      display: block;
+      font-size: 1.15rem;
+    }
+
+    .floating-card span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    section {
+      padding: 54px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      max-width: 650px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 360px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 240px 240px;
+      gap: 14px;
+    }
+
+    .gallery div {
+      border-radius: 24px;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+
+    .gallery .large {
+      grid-row: span 2;
+      background-image: url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80');
+    }
+
+    .g2 { background-image: url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80'); }
+    .g3 { background-image: url('https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80'); }
+    .g4 { background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'); }
+    .g5 { background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80'); }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .feature, .booking-card, .review {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      background: var(--soft);
+      display: grid;
+      place-items: center;
+      margin-bottom: 14px;
+      font-size: 1.35rem;
+    }
+
+    .feature h3 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .feature p, .review p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .booking-section {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .details-list {
+      display: grid;
+      gap: 16px;
+      color: var(--muted);
+    }
+
+    .details-list strong {
+      color: var(--text);
+    }
+
+    .booking-card {
+      position: sticky;
+      top: 94px;
+      box-shadow: var(--shadow);
+    }
+
+    .price {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+
+    .price strong {
+      font-size: 2rem;
+      letter-spacing: -0.05em;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+    }
+
+    label {
+      font-size: 0.82rem;
+      font-weight: 750;
+      color: #374151;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 13px 14px;
+      font: inherit;
+      background: #fff;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.12);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .total-box {
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 14px;
+      color: var(--muted);
+      display: grid;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+
+    .total-line {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .total-line.final {
+      color: var(--text);
+      font-weight: 850;
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .stars {
+      color: #f59e0b;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .map-card {
+      border-radius: 28px;
+      background: linear-gradient(135deg, #dff7ef, #edf2ff);
+      min-height: 330px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 30px;
+      border: 1px solid var(--border);
+    }
+
+    footer {
+      padding: 36px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero-grid, .booking-section { grid-template-columns: 1fr; }
+      .hero-photo { height: 420px; }
+      .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 220px 220px; }
+      .gallery .large { grid-column: span 2; grid-row: span 1; }
+      .features, .reviews { grid-template-columns: 1fr 1fr; }
+      .booking-card { position: static; }
+    }
+
+    @media (max-width: 620px) {
+      .features, .reviews, .form-row { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr; grid-template-rows: repeat(5, 210px); }
+      .gallery .large { grid-column: span 1; }
+      .section-heading { display: block; }
+      .section-heading p { margin-top: 12px; }
+      .floating-card { flex-direction: column; align-items: start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#top" class="logo">
+        <span class="logo-mark">S</span>
+        <span>Modern Stay</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#gallery">Photos</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#booking">Booking</a>
+        <a href="#reviews">Reviews</a>
+      </nav>
+      <a class="button" href="#booking">Book Now</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">★ Guest favorite · Peaceful modern escape</div>
+          <h1>A beautiful stay made easy.</h1>
+          <p>Welcome to a calm, stylish retreat with cozy interiors, thoughtful amenities, and everything you need for a relaxing getaway.</p>
+          <div class="hero-actions">
+            <a class="button" href="#booking">Check Availability</a>
+            <a class="button secondary" href="#gallery">View Photos</a>
+          </div>
+          <div class="trust-row">
+            <span>✓ Sleeps 6</span>
+            <span>✓ Fast Wi‑Fi</span>
+            <span>✓ Full kitchen</span>
+            <span>✓ Self check‑in</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-photo">
+            <div class="floating-card">
+              <div>
+                <strong>4.98 rated stay</strong>
+                <span>Quiet, clean, and close to everything.</span>
+              </div>
+              <a class="button" href="#booking">Reserve</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Warm rooms, fresh air, and modern comfort.</h2>
+          <p>Swap these placeholder photos with your own property images when you publish.</p>
+        </div>
+        <div class="gallery" aria-label="Property photo gallery">
+          <div class="large"></div>
+          <div class="g2"></div>
+          <div class="g3"></div>
+          <div class="g4"></div>
+          <div class="g5"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="amenities">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Everything guests care about most.</h2>
+          <p>Simple, scannable amenities help people decide quickly.</p>
+        </div>
+        <div class="features">
+          <article class="feature">
+            <div class="feature-icon">☕</div>
+            <h3>Coffee Bar</h3>
+            <p>Start the morning with coffee, tea, and simple breakfast basics.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">📶</div>
+            <h3>Fast Wi‑Fi</h3>
+            <p>Reliable internet for remote work, streaming, and trip planning.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">🍳</div>
+            <h3>Full Kitchen</h3>
+            <p>Cook comfortably with cookware, dishes, spices, and appliances.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">🔑</div>
+            <h3>Self Check‑In</h3>
+            <p>Arrive on your own schedule with simple check‑in instructions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking">
+      <div class="container booking-section">
+        <div>
+          <div class="section-heading">
+            <h2>Book your stay.</h2>
+          </div>
+          <div class="details-list">
+            <p><strong>The space:</strong> A bright, comfortable home designed for couples, families, small groups, and weekend travelers.</p>
+            <p><strong>Location:</strong> Add your neighborhood/city here. Mention nearby attractions, restaurants, event venues, hospitals, campuses, or parks.</p>
+            <p><strong>Guest access:</strong> Guests have access to the full property, parking, outdoor space, laundry, and all listed amenities.</p>
+            <p><strong>House rules:</strong> No smoking, no parties, quiet hours after 10 PM. Edit this to match your actual rules.</p>
+            <p><strong>Payments:</strong> Guests can request dates here, then pay securely through Stripe. For a GitHub Pages-only site, use a Stripe Payment Link for a deposit or fixed booking amount.</p>
+          </div>
+        </div>
+
+        <aside class="booking-card">
+          <div class="price">
+            <div><strong>$189</strong> <span>/ night</span></div>
+            <span>★ 4.98</span>
+          </div>
+
+          <form id="bookingForm">
+            <div class="form-row">
+              <div>
+                <label for="checkin">Check in</label>
+                <input id="checkin" type="date" required />
+              </div>
+              <div>
+                <label for="checkout">Check out</label>
+                <input id="checkout" type="date" required />
+              </div>
+            </div>
+
+            <div>
+              <label for="guests">Guests</label>
+              <select id="guests">
+                <option>1 guest</option>
+                <option>2 guests</option>
+                <option>3 guests</option>
+                <option>4 guests</option>
+                <option>5 guests</option>
+                <option>6 guests</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="name">Your name</label>
+              <input id="name" type="text" placeholder="Jane Smith" required />
+            </div>
+
+            <div>
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="jane@email.com" required />
+            </div>
+
+            <div class="total-box">
+              <div class="total-line"><span>Nights</span><span id="nights">0</span></div>
+              <div class="total-line"><span>Nightly rate</span><span>$189</span></div>
+              <div class="total-line"><span>Cleaning fee</span><span>$75</span></div>
+              <div class="total-line final"><span>Estimated total</span><span id="total">$0</span></div>
+            </div>
+
+            <button class="button" type="submit">Request Booking</button>
+            <a class="button secondary" id="stripePayButton" href="https://buy.stripe.com/REPLACE_WITH_YOUR_STRIPE_PAYMENT_LINK" target="_blank" rel="noopener">Pay Deposit with Stripe</a>
+            <p id="formMessage" style="color: var(--muted); font-size: 0.9rem;"></p>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Loved by guests.</h2>
+          <p>Replace these with real review quotes once you have them.</p>
+        </div>
+        <div class="reviews">
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>“Beautiful, clean, and exactly what we needed for a quiet weekend away.”</p>
+          </article>
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>“The house felt modern but still cozy. Check‑in was simple and the location was perfect.”</p>
+          </article>
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>“Thoughtful details everywhere. We would absolutely stay here again.”</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container map-card">
+        <div>
+          <h2>Close to the places guests want to be.</h2>
+          <p style="color: var(--muted); max-width: 620px; margin: 12px auto 0;">Add a map screenshot, embedded Google Map, or a simple list of drive times to nearby destinations here.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <p>© <span id="year"></span> Modern Stay. All rights reserved.</p>
+      <p>Email: hello@yourstay.com · Phone: (555) 123‑4567</p>
+    </div>
+  </footer>
+
+  <script>
+    const nightlyRate = 189;
+    const cleaningFee = 75;
+    const stripePaymentLink = 'https://buy.stripe.com/REPLACE_WITH_YOUR_STRIPE_PAYMENT_LINK';
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    const nightsEl = document.getElementById('nights');
+    const totalEl = document.getElementById('total');
+    const form = document.getElementById('bookingForm');
+    const formMessage = document.getElementById('formMessage');
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function calculateTotal() {
+      const start = new Date(checkin.value);
+      const end = new Date(checkout.value);
+      const diff = Math.round((end - start) / (1000 * 60 * 60 * 24));
+      const nights = diff > 0 ? diff : 0;
+      const total = nights ? nights * nightlyRate + cleaningFee : 0;
+      nightsEl.textContent = nights;
+      totalEl.textContent = `$${total.toLocaleString()}`;
+    }
+
+    checkin.addEventListener('change', calculateTotal);
+    checkout.addEventListener('change', calculateTotal);
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const guests = document.getElementById('guests').value;
+      const nights = nightsEl.textContent;
+      const total = totalEl.textContent;
+
+      if (!checkin.value || !checkout.value || Number(nights) <= 0) {
+        formMessage.textContent = 'Please choose valid check-in and check-out dates.';
+        return;
+      }
+
+      const subject = encodeURIComponent('Booking Request for Modern Stay');
+      const body = encodeURIComponent(
+        `Hi, I would like to request a booking.\n\nName: ${name}\nEmail: ${email}\nCheck in: ${checkin.value}\nCheck out: ${checkout.value}\nGuests: ${guests}\nNights: ${nights}\nEstimated total: ${total}\n\nThank you!`
+      );
+
+      window.location.href = `mailto:hello@yourstay.com?subject=${subject}&body=${body}`;
+      formMessage.textContent = 'Opening your email app with the booking request. After confirming availability, send your guest the Stripe payment link or have them use the deposit button.';
+    });
+  </script>
+</body>
+</html>
