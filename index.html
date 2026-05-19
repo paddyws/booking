@@ -96,6 +96,34 @@ section{padding:64px 0}.section-heading{display:flex;justify-content:space-betwe
 footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var(--muted)}.footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-brand{font-family:Cinzel,serif;color:white;font-size:1.3rem}.email-box{display:flex;gap:8px;margin-top:12px}.email-box input{max-width:260px}
 @media(max-width:1000px){.nav-links{display:none}.hero-grid,.booking-section,.experience-grid{grid-template-columns:1fr}.feature-grid,.garden-grid{grid-template-columns:repeat(2,1fr)}.suite-grid,.reviews{grid-template-columns:1fr 1fr}.booking-card{position:static}.hero-card{min-height:520px}.quote-strip{grid-template-columns:1fr}.quote-strip .button{width:max-content}}
 @media(max-width:650px){.suite-grid,.reviews,.feature-grid,.garden-grid,.form-row,.checkbox-grid{grid-template-columns:1fr}.section-heading{display:block}.section-heading p{margin-top:10px}.floating-card{flex-direction:column;align-items:flex-start}.logo-text strong{font-size:1.05rem}.logo-text span{font-size:.9rem}.hero-card{min-height:460px}.hero-card::before{font-size:4rem}.hero-card::after{font-size:4rem;right:34px}h1{font-size:3.05rem}.email-box{display:grid}}
+
+/* CUDI + QUOTE DUO */
+.quote-duo{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:34px;
+}
+.quote-strip.cudi-card{
+  margin-top:0;
+  grid-template-columns:110px 1fr;
+}
+.quote-strip.cudi-card .jelly{
+  width:108px;
+  height:108px;
+}
+.quote-strip.cudi-card blockquote{
+  font-family:Inter,system-ui,sans-serif;
+  font-size:clamp(1.05rem,2vw,1.5rem);
+  font-weight:800;
+}
+.quote-strip.cudi-card cite{
+  color:#9dffe0;
+}
+@media(max-width:900px){
+  .quote-duo{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
@@ -122,30 +150,37 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
       <h1>Mackenzie's Underwater Oasis</h1>
       <p>A luxury SeaBnB where ocean magic meets soft sheets, reef-lit massages, vibrant plant-forward meals, mermaid babysitters, seashell listening rituals, PLUR bracelets, and front-row seats to the drama of the deep.</p>
       <div class="hero-actions"><a class="button" href="#booking">Book Your Sea Adventure 🐚</a><a class="button secondary" href="#garden">Enter the Coral Garden</a></div>
-      <div class="trust-row"><span>✓ Sleeps 6</span><span>✓ Mermaid babysitting</span><span>✓ Vegan-coded meals</span><span>✓ Shark-view lounge</span></div>
+      <div class="trust-row"><span>✓ Sleeps 6</span><span>✓ Free mermaid babysitting</span><span>✓ Vegan-coded meals</span><span>✓ Shark-view lounge</span></div>
     </div>
     <div class="hero-card">
       <div class="floating-card"><div><strong>Where mermaids vacation and kids get storytime.</strong><span>Listen to shells. Wander the reef. Sleep beneath blue light.</span></div><a class="button" href="#booking">Reserve</a></div>
     </div>
   </div>
-  <div class="container quote-strip">
-    <div class="jelly"><img src="alison.jpg" alt="Alison Wonderland portrait"></div>
-    <blockquote>“We’re all just looking for something real with someone who gets us.”<cite>— Alison Wonderland</cite></blockquote>
-    <a class="button secondary" href="#booking">Find Your Ocean Moment</a>
+  <div class="container quote-duo">
+    <div class="quote-strip">
+      <div class="jelly"><img src="alison.jpg" alt="Alison Wonderland portrait"></div>
+      <blockquote>“We’re all just looking for something real with someone who gets us.”<cite>— Alison Wonderland</cite></blockquote>
+      <a class="button secondary" href="#booking">Find Your Ocean Moment</a>
+    </div>
+
+    <div class="quote-strip cudi-card">
+      <div class="jelly"><img src="cudi.jpg" alt="Kid Cudi portrait"></div>
+      <blockquote>“The people I’ve met and the places I’ve been all make me the man I so proudly am.”<cite>— Kid Cudi</cite></blockquote>
+    </div>
   </div>
 </section>
 <section id="amenities">
   <div class="container">
     <div class="section-heading"><h2>More underwater. More wonder. More shell-to-ear magic.</h2><p>Wellness, whimsy, family options, and ocean-floor theatrics in one glowing SeaBnB.</p></div>
     <div class="feature-grid">
-      <article class="feature"><div class="icon">🪷</div><h3>Reef Massages</h3><p>Ocean-sound relaxation rituals for your mind, body, and suspiciously tense shoulders.</p></article>
+      <article class="feature"><div class="icon">🪷</div><h3>Reef Massages</h3><p>Massages from actual mermaids! Ocean-sound relaxation for your mind, body, and suspiciously tense shoulders.</p></article>
       <article class="feature"><div class="icon">🥗</div><h3>Vegan Food</h3><p>Plant-forward meals styled with color, texture, protein, fiber, and joy without sounding like homework.</p></article>
-      <article class="feature"><div class="icon">🧜‍♀️</div><h3>Mermaid Babysits</h3><p>Kid-friendly story hours, shell crafts, sea songs, and reef games while adults exhale.</p></article>
-      <article class="feature"><div class="icon">🦈</div><h3>Shark Watching</h3><p>Front-row seats to ocean drama, safely behind luxury glass and theatrical lighting.</p></article>
-      <article class="feature"><div class="icon">🐚</div><h3>Listen to the Sea</h3><p>Seashell listening stations tucked into nooks for little moments of hush and wonder.</p></article>
-      <article class="feature"><div class="icon">🌈</div><h3>PLUR Bracelets</h3><p>Peace, love, unity, respect, and tiny glowing bracelets for your underwater rave heart.</p></article>
+      <article class="feature"><div class="icon">🧜‍♀️</div><h3>Mermaid Babysits</h3><p>Mermaids will literally babysit your kids at no extra charge! Story hours, shell crafts, sea songs, and reef games while adults exhale.</p></article>
+      <article class="feature"><div class="icon">🦈</div><h3>Shark Watching</h3><p>Watch shark attacks safely from the panoramic reef lounge. Very dramatic. Very safe. Emotionally wet.</p></article>
+      <article class="feature"><div class="icon">🐚</div><h3>Listen to the Sea</h3><p>Seashell listening stations tucked into nooks so guests can hear the ocean say, “you’re doing amazing, sweetie.”</p></article>
+      <article class="feature"><div class="icon">🌈</div><h3>PLUR Bracelets</h3><p>Peace, love, unity, respect, and tiny glowing bracelets for your underwater rave heart. Kandi, but make it kelp.</p></article>
       <article class="feature"><div class="icon">🪸</div><h3>Coral Corners</h3><p>Photo-friendly reef alcoves with glowing coral, sea glass, soft blue shadows, and sparkle.</p></article>
-      <article class="feature"><div class="icon">🫧</div><h3>Bubble Hour</h3><p>Mocktails, mineral water, tiny snacks, and a strangely serious commitment to bubbles.</p></article>
+      <article class="feature"><div class="icon">🫧</div><h3>Bubble Hour</h3><p>Mocktails, mineral water, tiny snacks, and a strangely serious commitment to bubbles. We do not apologize.</p></article>
     </div>
   </div>
 </section>
@@ -199,7 +234,7 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
         <div class="form-row"><div><label for="checkin">Check in</label><input id="checkin" type="date" required></div><div><label for="checkout">Check out</label><input id="checkout" type="date" required></div></div>
         <div><label for="guests">Guests</label><select id="guests"><option>1 guest</option><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option></select></div>
         <div><label for="suite">Suite fantasy</label><select id="suite"><option>Mermaid Grotto Suite</option><option>Shark Observatory</option><option>Bioluminescent Cave</option><option>Surprise me, sea witch</option></select></div>
-        <div><label>Ocean extras</label><div class="checkbox-grid"><label class="check-card"><input type="checkbox" value="Massage"> Massage</label><label class="check-card"><input type="checkbox" value="Vegan meals"> Vegan meals</label><label class="check-card"><input type="checkbox" value="Mermaid babysitting"> Mermaid babysitting</label><label class="check-card"><input type="checkbox" value="PLUR bracelets"> PLUR bracelets</label><label class="check-card"><input type="checkbox" value="Shell listening"> Shell listening</label><label class="check-card"><input type="checkbox" value="Shark watch"> Shark watch</label></div></div>
+        <div><label>Ocean extras</label><div class="checkbox-grid"><label class="check-card"><input type="checkbox" value="Massage"> Massage</label><label class="check-card"><input type="checkbox" value="Vegan meals"> Vegan meals</label><label class="check-card"><input type="checkbox" value="Mermaid babysitting"> Mermaid babysitting, literally free</label><label class="check-card"><input type="checkbox" value="PLUR bracelets"> PLUR bracelets</label><label class="check-card"><input type="checkbox" value="Shell listening"> Shell listening</label><label class="check-card"><input type="checkbox" value="Shark watch"> Shark watch</label></div></div>
         <div><label for="name">Name</label><input id="name" type="text" placeholder="Captain of the party" required></div>
         <div><label for="email">Email</label><input id="email" type="email" placeholder="you@oceanmail.com" required></div>
         <div><label for="notes">Notes</label><textarea id="notes" placeholder="Kids' ages, massage requests, vegan food preferences, mermaid topics, shark fear level, etc."></textarea></div>
