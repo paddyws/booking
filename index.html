@@ -104,6 +104,154 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
 @media(max-width:1000px){.nav-links{display:none}.hero-grid,.booking-section,.experience-grid{grid-template-columns:1fr}.feature-grid,.garden-grid{grid-template-columns:repeat(2,1fr)}.suite-grid,.reviews{grid-template-columns:1fr 1fr}.booking-card{position:static}.hero-card{min-height:520px}.quote-strip{grid-template-columns:1fr}.quote-strip .button{width:max-content}}
 @media(max-width:650px){.suite-grid,.reviews,.feature-grid,.garden-grid,.form-row,.checkbox-grid{grid-template-columns:1fr}.section-heading{display:block}.section-heading p{margin-top:10px}.floating-card{flex-direction:column;align-items:flex-start}.logo-text strong{font-size:1.05rem}.logo-text span{font-size:.9rem}.hero-card{min-height:460px}.hero-card::before{font-size:4rem}.hero-card::after{font-size:4rem;right:34px}h1{font-size:3.05rem}.email-box{display:grid}}
 
+
+/* HERO SPUNK + IMMERSION LINE + SWIMMING SHARKS */
+.immersion-line{
+  margin:-4px 0 24px;
+  width:max-content;
+  max-width:100%;
+  padding:14px 21px;
+  border-radius:999px;
+  color:#d9fdff;
+  font-weight:900;
+  line-height:1.35;
+  font-size:clamp(1rem,1.6vw,1.35rem);
+  background:
+    linear-gradient(135deg,rgba(0,169,199,.18),rgba(103,232,165,.10)),
+    rgba(0,18,38,.54);
+  border:1px solid rgba(127,247,255,.28);
+  box-shadow:
+    0 0 28px rgba(127,247,255,.15),
+    inset 0 0 26px rgba(255,255,255,.05);
+  backdrop-filter:blur(14px);
+  animation:immersionFloat 4.8s ease-in-out infinite;
+}
+
+.immersion-line span{
+  color:#9dffe0;
+  letter-spacing:.09em;
+  text-shadow:
+    0 0 10px rgba(157,255,224,.75),
+    0 0 26px rgba(127,247,255,.45);
+}
+
+@keyframes immersionFloat{
+  50%{transform:translateY(-5px)}
+}
+
+.hero h1{
+  position:relative;
+  display:inline-block;
+  padding-bottom:10px;
+  color:transparent;
+  background:
+    linear-gradient(180deg,#ffffff 0%,#e9feff 32%,#9ef9ff 66%,#bfffe5 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  filter:drop-shadow(0 0 18px rgba(127,247,255,.18));
+  text-shadow:
+    0 0 18px rgba(127,247,255,.22),
+    0 10px 38px rgba(0,0,0,.36);
+}
+
+.hero h1::after{
+  content:"";
+  position:absolute;
+  left:2%;
+  right:8%;
+  bottom:-2px;
+  height:5px;
+  border-radius:999px;
+  background:
+    linear-gradient(90deg,transparent,rgba(157,255,224,.95),rgba(127,247,255,.8),transparent);
+  box-shadow:0 0 24px rgba(127,247,255,.52);
+}
+
+.hero h1::before{
+  content:"✦";
+  position:absolute;
+  right:-.35em;
+  top:-.15em;
+  font-size:clamp(1.4rem,3vw,2.6rem);
+  color:#bfffe5;
+  text-shadow:0 0 22px rgba(127,247,255,.8);
+  animation:titleSparkle 3.2s ease-in-out infinite;
+}
+
+@keyframes titleSparkle{
+  0%,100%{opacity:.45;transform:scale(.85) rotate(0deg)}
+  50%{opacity:1;transform:scale(1.15) rotate(18deg)}
+}
+
+.swim-shark{
+  position:fixed;
+  left:-12vw;
+  z-index:1;
+  pointer-events:none;
+  opacity:.15;
+  filter:drop-shadow(0 0 18px rgba(127,247,255,.22));
+  font-size:clamp(2rem,4vw,4.7rem);
+  animation-timing-function:linear;
+  animation-iteration-count:infinite;
+}
+
+.swim-shark.one{
+  top:16%;
+  animation-name:swimSharkOne;
+  animation-duration:36s;
+}
+
+.swim-shark.two{
+  top:48%;
+  opacity:.11;
+  font-size:clamp(1.8rem,3.3vw,3.8rem);
+  animation-name:swimSharkTwo;
+  animation-duration:49s;
+  animation-delay:-12s;
+}
+
+.swim-shark.three{
+  top:76%;
+  opacity:.10;
+  font-size:clamp(1.5rem,2.8vw,3.2rem);
+  animation-name:swimSharkThree;
+  animation-duration:58s;
+  animation-delay:-25s;
+}
+
+.swim-shark.four{
+  top:31%;
+  opacity:.08;
+  font-size:clamp(1.4rem,2.5vw,2.8rem);
+  animation-name:swimSharkFour;
+  animation-duration:68s;
+  animation-delay:-38s;
+}
+
+@keyframes swimSharkOne{
+  from{transform:translateX(0) translateY(0) rotate(0deg)}
+  45%{transform:translateX(58vw) translateY(-18px) rotate(-4deg)}
+  to{transform:translateX(124vw) translateY(10px) rotate(2deg)}
+}
+
+@keyframes swimSharkTwo{
+  from{transform:translateX(0) translateY(0) rotate(0deg)}
+  50%{transform:translateX(64vw) translateY(26px) rotate(5deg)}
+  to{transform:translateX(130vw) translateY(-8px) rotate(-2deg)}
+}
+
+@keyframes swimSharkThree{
+  from{transform:translateX(0) translateY(0) rotate(-2deg)}
+  55%{transform:translateX(70vw) translateY(-14px) rotate(3deg)}
+  to{transform:translateX(122vw) translateY(18px) rotate(0deg)}
+}
+
+@keyframes swimSharkFour{
+  from{transform:translateX(128vw) scaleX(-1) translateY(0)}
+  50%{transform:translateX(54vw) scaleX(-1) translateY(-20px)}
+  to{transform:translateX(-20vw) scaleX(-1) translateY(8px)}
+}
+
 /* QUOTE CARDS */
 .quote-duo{
   display:grid;
@@ -180,6 +328,10 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
 <div class="bubble" style="left:36%;width:30px;height:30px;animation-duration:18s"></div>
 <div class="bubble" style="left:64%;width:18px;height:18px;animation-duration:12s"></div>
 <div class="bubble" style="left:84%;width:26px;height:26px;animation-duration:16s"></div>
+<div class="swim-shark one">🦈</div>
+<div class="swim-shark two">🦈</div>
+<div class="swim-shark three">🦈</div>
+<div class="swim-shark four">🦈</div>
 <div class="sparkle" style="left:12%;top:24%">✧</div><div class="sparkle" style="left:78%;top:18%">✦</div><div class="sparkle" style="left:55%;top:62%">✧</div>
 <div class="coral-bed"><span style="left:1%">🪸</span><span style="left:10%">🌿</span><span style="left:20%">🐚</span><span style="left:33%">🪸</span><span style="left:47%">🌿</span><span style="left:59%">🐠</span><span style="left:72%">🪸</span><span style="left:86%">🐚</span></div>
 <header>
@@ -195,6 +347,7 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
     <div>
       <span class="script">Welcome to</span>
       <div class="eyebrow">🧜‍♀️ Massages · Vegan food · Mermaid babysitting · Shark watching</div>
+      <div class="immersion-line">🌊🐚 At our SeaBnB, we believe in baptism by <span>IMMERSION</span>. 🦈🫧</div>
       <h1>Mackenzie's Underwater Oasis</h1>
       <p>A complete SeaBnB where beach energy meets soft sheets, reef-lit massages, plant-based surprises, mermaid babysitters, a mermaid strip club! (members only), seashell listening rituals, make-your-own bracelets, and front-row seats to real life shark attacks.</p>
       <div class="hero-actions"><a class="button" href="#booking">Book Your Sea Adventure 🐚</a><a class="button secondary" href="#garden">Enter the Coral Garden</a></div>
