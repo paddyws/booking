@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <style>
 :root{
   --abyss:#00111d;
@@ -35,19 +34,12 @@ body{
   font-family:Inter,system-ui,sans-serif;
   color:var(--text);
   overflow-x:hidden;
-  min-height:100vh;
   background:
-    linear-gradient(
-      180deg,
-      rgba(0,190,255,.15) 0%,
-      rgba(0,120,180,.28) 22%,
-      rgba(0,50,90,.62) 58%,
-      rgba(0,8,20,.96) 100%
-    ),
-    url('oceanbg.png');
-  background-size:cover;
-  background-position:center top;
-  background-attachment:fixed;
+    radial-gradient(circle at 18% 7%,rgba(127,247,255,.20),transparent 24%),
+    radial-gradient(circle at 82% 12%,rgba(103,232,165,.18),transparent 26%),
+    radial-gradient(circle at 52% 92%,rgba(31,191,117,.16),transparent 32%),
+    linear-gradient(180deg,#00111d 0%,#03243a 34%,#064f73 72%,#047896 100%);
+  min-height:100vh;
 }
 body::before{
   content:"";
@@ -89,7 +81,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(1,6,17,.72);backdrop-fi
 .hero{padding:82px 0 48px}.hero-grid{display:grid;grid-template-columns:1fr 1.02fr;gap:46px;align-items:center}.eyebrow{display:inline-flex;gap:10px;align-items:center;padding:10px 18px;border-radius:999px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.13);color:#bfffff;font-weight:900;box-shadow:0 0 24px rgba(116,250,255,.13);margin-bottom:20px}
 h1{font-family:Cinzel,serif;font-size:clamp(3.25rem,8vw,6.9rem);line-height:.88;letter-spacing:-.06em;margin-bottom:22px;text-shadow:0 0 34px rgba(116,250,255,.22)}
 .script{font-family:Pacifico,cursive;color:#9dffe0;font-size:clamp(1.6rem,3vw,2.35rem);display:block;letter-spacing:0;text-shadow:0 0 22px rgba(103,232,165,.36);margin-bottom:8px}.hero p{font-size:1.14rem;line-height:1.85;color:var(--muted);max-width:660px;margin-bottom:28px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}.trust-row{display:flex;flex-wrap:wrap;gap:10px}.trust-row span{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.11);color:#d5fbff;font-weight:800;font-size:.9rem}
-.hero-card{position:relative;min-height:675px;border-radius:44px;overflow:hidden;background:linear-gradient(90deg,rgba(0,17,29,.03),rgba(0,17,29,.58)),url('seabnb.png') center/cover;border:1px solid rgba(255,255,255,.16);box-shadow:var(--shadow)}
+.hero-card{position:relative;min-height:675px;border-radius:44px;overflow:hidden;background:linear-gradient(90deg,rgba(0,17,29,.03),rgba(0,17,29,.58)),url('seabnb.jpg') center/cover;border:1px solid rgba(255,255,255,.16);box-shadow:var(--shadow)}
 .hero-card::before{content:"🦈";position:absolute;right:36px;top:38px;font-size:5.8rem;filter:drop-shadow(0 18px 20px rgba(0,0,0,.45));animation:shark 4.5s ease-in-out infinite;z-index:2}@keyframes shark{50%{transform:translateX(-16px) translateY(10px) rotate(-5deg)}}
 .hero-card::after{content:"🧜‍♀️";position:absolute;right:62px;bottom:162px;font-size:5.2rem;filter:drop-shadow(0 18px 20px rgba(0,0,0,.45));animation:mermaid 5s ease-in-out infinite;z-index:2}@keyframes mermaid{50%{transform:translateY(-12px) rotate(4deg)}}
 .floating-card{position:absolute;left:24px;right:24px;bottom:24px;z-index:4;background:rgba(2,7,20,.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.13);border-radius:30px;padding:24px;display:flex;justify-content:space-between;align-items:center;gap:18px;box-shadow:0 0 35px rgba(116,250,255,.15)}.floating-card strong{display:block;font-size:1.18rem}.floating-card span{color:var(--muted);font-size:.94rem}
@@ -97,7 +89,7 @@ h1{font-family:Cinzel,serif;font-size:clamp(3.25rem,8vw,6.9rem);line-height:.88;
 section{padding:64px 0}.section-heading{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px}.section-heading h2{font-family:Cinzel,serif;font-size:clamp(2.35rem,5vw,4.65rem);line-height:.94;letter-spacing:-.04em;max-width:840px}.section-heading p{color:var(--muted);max-width:430px}
 .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.feature{padding:22px 16px;border-radius:28px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.11);backdrop-filter:blur(14px);text-align:center;box-shadow:0 22px 60px rgba(0,0,0,.24);transition:.24s}.feature:hover{transform:translateY(-6px);box-shadow:var(--glow)}.feature .icon{font-size:2.5rem;margin-bottom:12px}.feature h3{font-size:1rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}.feature p{color:var(--muted);font-size:.9rem;line-height:1.55}
 .coral-garden{position:relative;overflow:hidden;border-radius:42px;padding:34px;background:linear-gradient(135deg,rgba(0,169,199,.14),rgba(127,247,255,.09),rgba(103,232,165,.13));border:1px solid rgba(255,255,255,.13);box-shadow:var(--shadow)}.coral-garden::before{content:"🪸  🐠  🫧  🐚  🪼  🐟  🪸";position:absolute;left:-20px;right:-20px;bottom:8px;font-size:3rem;letter-spacing:18px;opacity:.42;white-space:nowrap;animation:reefDrift 12s linear infinite alternate}@keyframes reefDrift{from{transform:translateX(-35px)}to{transform:translateX(35px)}}.garden-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;position:relative;z-index:2}.garden-card{padding:22px;border-radius:28px;background:rgba(1,6,17,.38);border:1px solid rgba(255,255,255,.11);backdrop-filter:blur(10px)}.garden-card h3{margin-bottom:8px}.garden-card p{color:var(--muted)}
-.suite-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.suite{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:34px;overflow:hidden;backdrop-filter:blur(14px);box-shadow:var(--shadow);transition:.25s}.suite:hover{transform:translateY(-7px)}.suite-photo{height:230px;background-size:cover;background-position:center;position:relative}.suite-photo span{position:absolute;left:16px;bottom:16px;border-radius:999px;padding:8px 12px;background:rgba(2,7,20,.68);border:1px solid rgba(255,255,255,.13);font-weight:900;color:#c8fbff}.suite-content{padding:22px}.suite h3{font-size:1.22rem;margin-bottom:8px}.suite p{color:var(--muted);font-size:.95rem}.suite strong{display:block;margin-top:16px;color:#9ef9ff}.s1{background-image:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.38)),url('mermaid.png')}.s2{background-image:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.38)),url('seabnb.png')}.s3{background-image:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.38)),url('coral.png')}
+.suite-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.suite{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:34px;overflow:hidden;backdrop-filter:blur(14px);box-shadow:var(--shadow);transition:.25s}.suite:hover{transform:translateY(-7px)}.suite-photo{height:230px;background-size:cover;background-position:center;position:relative}.suite-photo span{position:absolute;left:16px;bottom:16px;border-radius:999px;padding:8px 12px;background:rgba(2,7,20,.68);border:1px solid rgba(255,255,255,.13);font-weight:900;color:#c8fbff}.suite-content{padding:22px}.suite h3{font-size:1.22rem;margin-bottom:8px}.suite p{color:var(--muted);font-size:.95rem}.suite strong{display:block;margin-top:16px;color:#9ef9ff}.s1{background-image:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.38)),url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=900&q=80')}.s2{background-image:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.38)),url('seabnb.jpg')}.s3{background-image:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.38)),url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=80')}
 .experience-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.experience-panel{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:36px;padding:30px;backdrop-filter:blur(14px);box-shadow:var(--shadow)}.experience-panel h3{font-family:Cinzel,serif;font-size:2rem;margin-bottom:12px}.experience-panel p,.experience-panel li{color:var(--muted)}.experience-panel ul{display:grid;gap:12px;list-style:none;margin-top:16px}.experience-panel li::before{content:"✦ ";color:var(--aqua);font-weight:900}
 .booking-section{display:grid;grid-template-columns:1fr 430px;gap:28px;align-items:start}.story-box,.booking-card{background:rgba(255,255,255,.085);border:1px solid rgba(255,255,255,.12);border-radius:36px;padding:30px;backdrop-filter:blur(14px);box-shadow:var(--shadow)}.story{display:grid;gap:16px;color:var(--muted)}.story strong{color:white}.pill-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.pill{border-radius:999px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);padding:8px 13px;font-weight:900;color:#c8fbff}.booking-card{position:sticky;top:92px}.price{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}.price strong{font-size:2.35rem;color:#9ef9ff}.price span{color:var(--muted)}.booking-card h3{font-family:Cinzel,serif;font-size:2rem;margin-bottom:8px}.booking-card p{color:var(--muted);margin-bottom:16px}form{display:grid;gap:12px}label{font-size:.82rem;font-weight:900;color:#c8fbff}input,select,textarea{width:100%;padding:15px;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:white;font:inherit;outline:none}select option{color:#06172d}textarea{min-height:98px;resize:vertical}input::placeholder,textarea::placeholder{color:#aad2dc}input:focus,select:focus,textarea:focus{border-color:var(--aqua);box-shadow:0 0 0 4px rgba(116,250,255,.15)}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.checkbox-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.check-card{display:flex;gap:8px;align-items:center;padding:10px;border-radius:16px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:.9rem}.check-card input{width:auto}.total-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:16px;display:grid;gap:9px;color:var(--muted)}.total-line{display:flex;justify-content:space-between}.total-line.final{color:white;font-weight:900;border-top:1px solid rgba(255,255,255,.1);padding-top:10px;margin-top:4px}
 .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.review{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:32px;padding:24px;backdrop-filter:blur(14px)}.stars{color:var(--sand);letter-spacing:1px;margin-bottom:12px}.review p{color:var(--muted)}
@@ -105,369 +97,159 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
 @media(max-width:1000px){.nav-links{display:none}.hero-grid,.booking-section,.experience-grid{grid-template-columns:1fr}.feature-grid,.garden-grid{grid-template-columns:repeat(2,1fr)}.suite-grid,.reviews{grid-template-columns:1fr 1fr}.booking-card{position:static}.hero-card{min-height:520px}.quote-strip{grid-template-columns:1fr}.quote-strip .button{width:max-content}}
 @media(max-width:650px){.suite-grid,.reviews,.feature-grid,.garden-grid,.form-row,.checkbox-grid{grid-template-columns:1fr}.section-heading{display:block}.section-heading p{margin-top:10px}.floating-card{flex-direction:column;align-items:flex-start}.logo-text strong{font-size:1.05rem}.logo-text span{font-size:.9rem}.hero-card{min-height:460px}.hero-card::before{font-size:4rem}.hero-card::after{font-size:4rem;right:34px}h1{font-size:3.05rem}.email-box{display:grid}}
 
+/* MOBILE LEGIBILITY PATCH — keeps desktop intact */
+@media(max-width:760px){
+  body{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0,12,25,.72) 0%,
+        rgba(0,22,42,.80) 26%,
+        rgba(0,28,50,.88) 58%,
+        rgba(0,8,18,.97) 100%
+      ),
+      url('oceanbg.png');
+    background-size:cover;
+    background-position:center top;
+    background-attachment:scroll;
+  }
 
-/* HERO SPUNK + IMMERSION LINE + SWIMMING SHARKS */
-.immersion-line{
-  margin:-4px 0 24px;
-  width:max-content;
-  max-width:100%;
-  padding:14px 21px;
-  border-radius:999px;
-  color:#d9fdff;
-  font-weight:900;
-  line-height:1.35;
-  font-size:clamp(1rem,1.6vw,1.35rem);
-  background:
-    linear-gradient(135deg,rgba(0,169,199,.18),rgba(103,232,165,.10)),
-    rgba(0,18,38,.54);
-  border:1px solid rgba(127,247,255,.28);
-  box-shadow:
-    0 0 28px rgba(127,247,255,.15),
-    inset 0 0 26px rgba(255,255,255,.05);
-  backdrop-filter:blur(14px);
-  animation:immersionFloat 4.8s ease-in-out infinite;
-}
+  body::before{
+    opacity:.22;
+    background-image:
+      radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px),
+      linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.44));
+  }
 
-.immersion-line span{
-  color:#9dffe0;
-  letter-spacing:.09em;
-  text-shadow:
-    0 0 10px rgba(157,255,224,.75),
-    0 0 26px rgba(127,247,255,.45);
-}
+  body::after{
+    opacity:.55;
+  }
 
-@keyframes immersionFloat{
-  50%{transform:translateY(-5px)}
-}
+  header{
+    background:rgba(0,13,25,.92);
+  }
 
-.hero h1{
-  position:relative;
-  display:inline-block;
-  padding-bottom:10px;
-  color:transparent;
-  background:
-    linear-gradient(180deg,#ffffff 0%,#e9feff 32%,#9ef9ff 66%,#bfffe5 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  filter:drop-shadow(0 0 18px rgba(127,247,255,.18));
-  text-shadow:
-    0 0 18px rgba(127,247,255,.22),
-    0 10px 38px rgba(0,0,0,.36);
-}
+  .hero{
+    padding-top:24px;
+  }
 
-.hero h1::after{
-  content:"";
-  position:absolute;
-  left:2%;
-  right:8%;
-  bottom:-2px;
-  height:5px;
-  border-radius:999px;
-  background:
-    linear-gradient(90deg,transparent,rgba(157,255,224,.95),rgba(127,247,255,.8),transparent);
-  box-shadow:0 0 24px rgba(127,247,255,.52);
-}
+  .script{
+    color:#bfffe5;
+    opacity:.98;
+    text-shadow:0 2px 16px rgba(0,0,0,.75),0 0 14px rgba(103,232,165,.25);
+  }
 
-.hero h1::before{
-  content:"✦";
-  position:absolute;
-  right:-.35em;
-  top:-.15em;
-  font-size:clamp(1.4rem,3vw,2.6rem);
-  color:#bfffe5;
-  text-shadow:0 0 22px rgba(127,247,255,.8);
-  animation:titleSparkle 3.2s ease-in-out infinite;
-}
+  .eyebrow,
+  .immersion-line,
+  .trust-row span,
+  .feature,
+  .story-box,
+  .booking-card,
+  .experience-panel,
+  .review,
+  .garden-card,
+  .suite{
+    background:rgba(0,18,34,.74);
+    border-color:rgba(127,247,255,.22);
+    box-shadow:0 18px 45px rgba(0,0,0,.42);
+  }
 
-@keyframes titleSparkle{
-  0%,100%{opacity:.45;transform:scale(.85) rotate(0deg)}
-  50%{opacity:1;transform:scale(1.15) rotate(18deg)}
-}
+  .eyebrow{
+    color:#ecfeff;
+    text-shadow:0 2px 12px rgba(0,0,0,.82);
+  }
 
-.swim-shark{
-  position:fixed;
-  left:-12vw;
-  z-index:1;
-  pointer-events:none;
-  opacity:.15;
-  filter:drop-shadow(0 0 18px rgba(127,247,255,.22));
-  font-size:clamp(2rem,4vw,4.7rem);
-  animation-timing-function:linear;
-  animation-iteration-count:infinite;
-}
+  .immersion-line{
+    color:#ffffff;
+    background:rgba(0,28,48,.82);
+    text-shadow:0 2px 12px rgba(0,0,0,.85);
+  }
 
-.swim-shark.one{
-  top:16%;
-  animation-name:swimSharkOne;
-  animation-duration:36s;
-}
+  .hero h1{
+    color:#f5fdff;
+    background:none;
+    -webkit-background-clip:initial;
+    background-clip:initial;
+    filter:none;
+    text-shadow:
+      0 3px 0 rgba(0,25,38,.35),
+      0 8px 22px rgba(0,0,0,.86),
+      0 0 18px rgba(127,247,255,.22);
+    font-size:clamp(2.6rem,13vw,3.75rem);
+    max-width:100%;
+  }
 
-.swim-shark.two{
-  top:48%;
-  opacity:.11;
-  font-size:clamp(1.8rem,3.3vw,3.8rem);
-  animation-name:swimSharkTwo;
-  animation-duration:49s;
-  animation-delay:-12s;
-}
+  .hero h1::after{
+    opacity:.65;
+  }
 
-.swim-shark.three{
-  top:76%;
-  opacity:.10;
-  font-size:clamp(1.5rem,2.8vw,3.2rem);
-  animation-name:swimSharkThree;
-  animation-duration:58s;
-  animation-delay:-25s;
-}
+  .hero p{
+    color:#e5faff;
+    background:rgba(0,18,34,.54);
+    border:1px solid rgba(127,247,255,.16);
+    border-radius:22px;
+    padding:15px;
+    text-shadow:0 2px 10px rgba(0,0,0,.74);
+  }
 
-.swim-shark.four{
-  top:31%;
-  opacity:.08;
-  font-size:clamp(1.4rem,2.5vw,2.8rem);
-  animation-name:swimSharkFour;
-  animation-duration:68s;
-  animation-delay:-38s;
-}
+  .hero-card{
+    min-height:330px;
+    background-position:center;
+  }
 
-@keyframes swimSharkOne{
-  from{transform:translateX(0) translateY(0) rotate(0deg)}
-  45%{transform:translateX(58vw) translateY(-18px) rotate(-4deg)}
-  to{transform:translateX(124vw) translateY(10px) rotate(2deg)}
-}
+  .floating-card{
+    background:rgba(0,13,25,.86);
+  }
 
-@keyframes swimSharkTwo{
-  from{transform:translateX(0) translateY(0) rotate(0deg)}
-  50%{transform:translateX(64vw) translateY(26px) rotate(5deg)}
-  to{transform:translateX(130vw) translateY(-8px) rotate(-2deg)}
-}
+  .floating-card strong,
+  .section-heading h2,
+  .booking-card h3,
+  .experience-panel h3,
+  .suite h3,
+  .garden-card h3{
+    color:#ffffff;
+    text-shadow:0 2px 16px rgba(0,0,0,.72);
+  }
 
-@keyframes swimSharkThree{
-  from{transform:translateX(0) translateY(0) rotate(-2deg)}
-  55%{transform:translateX(70vw) translateY(-14px) rotate(3deg)}
-  to{transform:translateX(122vw) translateY(18px) rotate(0deg)}
-}
-
-@keyframes swimSharkFour{
-  from{transform:translateX(128vw) scaleX(-1) translateY(0)}
-  50%{transform:translateX(54vw) scaleX(-1) translateY(-20px)}
-  to{transform:translateX(-20vw) scaleX(-1) translateY(8px)}
-}
-
-/* QUOTE CARDS */
-.quote-duo{
-  display:grid;
-  grid-template-columns:1.2fr 1fr 1fr;
-  gap:28px;
-  align-items:stretch;
-  margin-top:42px;
-}
-
-.quote-duo .quote-strip{
-  margin-top:0;
-  height:100%;
-  min-height:340px;
-  grid-template-columns:110px 1fr;
-  align-items:center;
-}
-
-.quote-duo .quote-strip:first-child{
-  grid-template-columns:110px 1fr;
-}
-
-.quote-duo .quote-strip .button{
-  display:none;
-}
-
-.quote-duo .quote-strip blockquote{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  height:100%;
-  font-family:Inter,system-ui,sans-serif;
-  font-size:clamp(1rem,1.7vw,1.45rem);
-  font-weight:800;
-  line-height:1.4;
-}
-
-.quote-duo .quote-strip:first-child blockquote{
-  font-family:Cinzel,serif;
-  font-size:clamp(1.2rem,2vw,1.85rem);
-  line-height:1.32;
-}
-
-.quote-duo .quote-strip cite{
-  margin-top:18px;
-  color:#9dffe0;
-}
-
-.quote-duo .quote-strip .jelly{
-  width:108px;
-  height:108px;
-  flex-shrink:0;
-}
-
-.quote-strip.chance-card{
-  border-color:rgba(255,196,107,.36);
-  background:linear-gradient(135deg,rgba(0,169,199,.13),rgba(255,196,107,.10));
-}
-
-@media(max-width:1100px){
-  .quote-duo{
-    grid-template-columns:1fr;
+  .floating-card span,
+  .section-heading p,
+  .feature p,
+  .suite p,
+  .experience-panel p,
+  .experience-panel li,
+  .story,
+  .review p,
+  .garden-card p{
+    color:#d7f8ff;
   }
 
   .quote-duo .quote-strip{
-    min-height:auto;
+    background:rgba(0,18,34,.80);
+    border-color:rgba(127,247,255,.24);
+  }
+
+  .quote-duo .quote-strip blockquote{
+    color:#f4feff;
+    text-shadow:0 2px 14px rgba(0,0,0,.76);
+  }
+
+  .button{
+    box-shadow:0 10px 24px rgba(0,0,0,.36),0 0 18px rgba(127,247,255,.18);
+  }
+
+  .mobile-bookbar{
+    background:rgba(0,13,25,.93);
   }
 }
 
-
-/* SEA CALENDAR */
-.flatpickr-calendar{
-  background:rgba(3,35,57,.98);
-  border:1px solid rgba(127,247,255,.34);
-  box-shadow:0 24px 80px rgba(0,0,0,.55),0 0 32px rgba(127,247,255,.16);
-  color:var(--text);
-  border-radius:24px;
-  overflow:hidden;
+@media(max-width:420px){
+  .container{width:min(100% - 18px,1200px);}
+  .hero h1{font-size:2.75rem;}
+  .immersion-line{font-size:.88rem;}
+  .hero p{font-size:.95rem;line-height:1.55;}
+  .quote-duo .quote-strip{grid-template-columns:64px 1fr;}
+  .quote-duo .quote-strip .jelly{width:64px;height:64px;}
 }
-
-.flatpickr-months,
-.flatpickr-weekdays{
-  background:rgba(0,169,199,.12);
-}
-
-.flatpickr-current-month,
-.flatpickr-monthDropdown-months,
-.flatpickr-weekday{
-  color:#e9feff !important;
-  font-weight:900;
-}
-
-.flatpickr-day{
-  color:#e9feff;
-  border-radius:12px;
-}
-
-.flatpickr-day:hover,
-.flatpickr-day.selected,
-.flatpickr-day.startRange,
-.flatpickr-day.endRange{
-  background:#00a9c7 !important;
-  border-color:#7ff7ff !important;
-  color:white !important;
-  box-shadow:0 0 16px rgba(127,247,255,.28);
-}
-
-.flatpickr-day.flatpickr-disabled,
-.flatpickr-day.flatpickr-disabled:hover{
-  color:rgba(255,255,255,.25) !important;
-  background:rgba(255,143,115,.14) !important;
-  border-color:rgba(255,143,115,.22) !important;
-  text-decoration:line-through;
-  cursor:not-allowed;
-}
-
-.flatpickr-day.today{
-  border-color:#9dffe0;
-}
-
-.calendar-help{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-top:8px;
-  font-size:.82rem;
-  color:var(--muted);
-}
-
-.calendar-chip{
-  padding:8px 10px;
-  border-radius:999px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.10);
-}
-
-.calendar-chip.available::before{content:"● ";color:#9dffe0}
-.calendar-chip.booked::before{content:"● ";color:#ff8f73}
-
-
-
-/* MOBILE RESPONSIVE POLISH */
-.mobile-bookbar{display:none;}
-@media(max-width:760px){
-  html,body{max-width:100%;overflow-x:hidden;}
-  body{background-attachment:scroll;background-position:center top;}
-  body::after{height:120px;bottom:-46px;}
-  .container{width:min(100% - 22px,1200px);}
-  header{position:sticky;top:0;}
-  .nav{padding:10px 0;gap:10px;}
-  .logo{gap:9px;min-width:0;}
-  .logo-mark{width:42px;height:42px;border-radius:14px;font-size:1.35rem;flex:0 0 auto;}
-  .logo-text{min-width:0;}
-  .logo-text strong{font-size:.93rem;line-height:1.05;letter-spacing:0;display:block;max-width:185px;white-space:normal;}
-  .logo-text span{font-size:.82rem;}
-  .nav>.button{display:none;}
-  .hero{padding:34px 0 32px;}
-  .hero-grid{grid-template-columns:1fr;gap:22px;}
-  .script{font-size:1.55rem;margin-bottom:8px;}
-  .eyebrow{display:flex;width:100%;border-radius:22px;padding:10px 13px;font-size:.82rem;line-height:1.35;flex-wrap:wrap;margin-bottom:14px;}
-  .immersion-line{width:100%;border-radius:22px;padding:12px 14px;font-size:.95rem;margin:0 0 18px;}
-  .hero h1{font-size:clamp(2.55rem,15vw,4rem);line-height:.92;letter-spacing:-.05em;margin-bottom:18px;}
-  .hero h1::before{right:.04em;top:-.35em;}
-  .hero p{font-size:1rem;line-height:1.65;margin-bottom:20px;}
-  .hero-actions{display:grid;grid-template-columns:1fr;gap:10px;}
-  .button{width:100%;padding:13px 18px;}
-  .trust-row{gap:8px;}
-  .trust-row span{font-size:.78rem;padding:7px 10px;}
-  .hero-card{min-height:350px;border-radius:28px;}
-  .hero-card::before{font-size:3.4rem;right:20px;top:24px;}
-  .hero-card::after{font-size:3.4rem;right:24px;bottom:132px;}
-  .floating-card{left:12px;right:12px;bottom:12px;border-radius:22px;padding:16px;gap:10px;}
-  .floating-card strong{font-size:.98rem;}
-  .floating-card span{font-size:.82rem;line-height:1.35;}
-  .floating-card .button{display:none;}
-  section{padding:38px 0;}
-  .section-heading{display:block;margin-bottom:18px;}
-  .section-heading h2{font-size:clamp(2rem,10vw,3.1rem);line-height:.98;}
-  .section-heading p{font-size:.98rem;line-height:1.55;margin-top:10px;}
-  .feature-grid,.garden-grid,.suite-grid,.experience-grid,.booking-section,.reviews{grid-template-columns:1fr;}
-  .feature{padding:18px 14px;border-radius:22px;}
-  .coral-garden,.experience-panel,.story-box,.booking-card{border-radius:26px;padding:20px;}
-  .suite-photo{height:210px;}
-  .booking-card{position:static;top:auto;}
-  .price strong{font-size:2rem;}
-  .form-row,.checkbox-grid,.calendar-help{grid-template-columns:1fr;}
-  input,select,textarea{font-size:16px;padding:13px;border-radius:15px;}
-  .check-card{font-size:.86rem;line-height:1.3;}
-  .total-box{border-radius:18px;padding:14px;}
-  .quote-duo{grid-template-columns:1fr;gap:14px;margin-top:26px;}
-  .quote-duo .quote-strip{min-height:auto;grid-template-columns:76px 1fr;padding:16px;border-radius:24px;gap:14px;}
-  .quote-duo .quote-strip .jelly{width:74px;height:74px;border-radius:18px;}
-  .quote-duo .quote-strip blockquote,.quote-duo .quote-strip:first-child blockquote{font-size:.95rem;line-height:1.35;}
-  .quote-duo .quote-strip cite{margin-top:8px;font-size:.82rem;}
-  .flatpickr-calendar{width:calc(100vw - 24px) !important;max-width:360px;border-radius:20px;left:12px !important;right:12px !important;}
-  .flatpickr-rContainer,.flatpickr-days,.dayContainer{width:100% !important;max-width:100% !important;min-width:0 !important;}
-  .flatpickr-day{max-width:14.285% !important;height:39px;line-height:39px;}
-  .coral-bed{height:86px;opacity:.52;}
-  .coral-bed span{font-size:2rem;}
-  .swim-shark{opacity:.08;}
-  footer{padding:34px 0 96px;}
-  .footer-grid{display:grid;gap:16px;}
-  .email-box{display:grid;}
-  .email-box input{max-width:100%;}
-  .mobile-bookbar{position:fixed;left:10px;right:10px;bottom:10px;z-index:999;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:22px;background:rgba(1,6,17,.82);border:1px solid rgba(127,247,255,.24);backdrop-filter:blur(18px);box-shadow:0 14px 40px rgba(0,0,0,.45);}
-  .mobile-bookbar span{font-weight:900;color:#e9feff;font-size:.9rem;line-height:1.1;}
-  .mobile-bookbar small{display:block;color:var(--muted);font-weight:700;font-size:.72rem;margin-top:2px;}
-  .mobile-bookbar .button{width:auto;padding:10px 14px;font-size:.82rem;white-space:nowrap;}
-}
-@media(max-width:380px){
-  .logo-text strong{max-width:150px;font-size:.84rem;}
-  .hero h1{font-size:2.35rem;}
-  .quote-duo .quote-strip{grid-template-columns:1fr;text-align:center;}
-  .quote-duo .quote-strip .jelly{margin:auto;}
-}
-
 </style>
 </head>
 <body>
@@ -476,10 +258,6 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
 <div class="bubble" style="left:36%;width:30px;height:30px;animation-duration:18s"></div>
 <div class="bubble" style="left:64%;width:18px;height:18px;animation-duration:12s"></div>
 <div class="bubble" style="left:84%;width:26px;height:26px;animation-duration:16s"></div>
-<div class="swim-shark one">🦈</div>
-<div class="swim-shark two">🦈</div>
-<div class="swim-shark three">🦈</div>
-<div class="swim-shark four">🦈</div>
 <div class="sparkle" style="left:12%;top:24%">✧</div><div class="sparkle" style="left:78%;top:18%">✦</div><div class="sparkle" style="left:55%;top:62%">✧</div>
 <div class="coral-bed"><span style="left:1%">🪸</span><span style="left:10%">🌿</span><span style="left:20%">🐚</span><span style="left:33%">🪸</span><span style="left:47%">🌿</span><span style="left:59%">🐠</span><span style="left:72%">🪸</span><span style="left:86%">🐚</span></div>
 <header>
@@ -495,46 +273,33 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
     <div>
       <span class="script">Welcome to</span>
       <div class="eyebrow">🧜‍♀️ Massages · Vegan food · Mermaid babysitting · Shark watching</div>
-      <div class="immersion-line">🌊🐚 At our SeaBnB, we believe in baptism by <span>IMMERSION</span>. 🦈🫧</div>
       <h1>Mackenzie's Underwater Oasis</h1>
-      <p>A complete SeaBnB where beach energy meets soft sheets, reef-lit massages, plant-based surprises, mermaid babysitters, a mermaid strip club! (deep sea creatures only), seashell listening, make-your-own bracelets, and front-row seats to real life shark attacks.</p>
+      <p>A luxury SeaBnB where ocean magic meets soft sheets, reef-lit massages, vibrant plant-forward meals, mermaid babysitters, seashell listening rituals, PLUR bracelets, and front-row seats to the drama of the deep.</p>
       <div class="hero-actions"><a class="button" href="#booking">Book Your Sea Adventure 🐚</a><a class="button secondary" href="#garden">Enter the Coral Garden</a></div>
-      <div class="trust-row"><span>✓ Sleeps 6</span><span>✓ Free mermaid babysitting</span><span>✓ Veggie meals</span><span>✓ Shark-view lounge</span></div>
+      <div class="trust-row"><span>✓ Sleeps 6</span><span>✓ Mermaid babysitting</span><span>✓ Vegan-coded meals</span><span>✓ Shark-view lounge</span></div>
     </div>
     <div class="hero-card">
-      <div class="floating-card"><div><strong>Where mermaids vacation and kids get storytime.</strong><span>Listen to shells. Wander the reef. Sleep beneath the deep blue sea</span></div><a class="button" href="#booking">Reserve</a></div>
+      <div class="floating-card"><div><strong>Where mermaids vacation and kids get storytime.</strong><span>Listen to shells. Wander the reef. Sleep beneath blue light.</span></div><a class="button" href="#booking">Reserve</a></div>
     </div>
   </div>
-  <div class="container quote-duo">
-    <div class="quote-strip">
-      <div class="jelly"><img src="alison.jpg" alt="Alison Wonderland portrait"></div>
-      <blockquote>“We’re all just looking for something real with someone who gets us.”<cite>— Alison Wonderland</cite></blockquote>
-      <a class="button secondary" href="#booking">Find Your Ocean Moment</a>
-    </div>
-
-    <div class="quote-strip cudi-card">
-      <div class="jelly"><img src="cudi.jpg" alt="Kid Cudi portrait"></div>
-      <blockquote>“The people I’ve met and the places I’ve been all make me the man I so proudly am.”<cite>— Kid Cudi</cite></blockquote>
-    </div>
-
-    <div class="quote-strip cudi-card chance-card">
-      <div class="jelly"><img src="chance.png" alt="Chance the Rapper portrait"></div>
-      <blockquote>“Finally going to go see the little mermaid”<cite>— Chance the Rapper</cite></blockquote>
-    </div>
+  <div class="container quote-strip">
+    <div class="jelly"><img src="alison.jpg" alt="Alison Wonderland portrait"></div>
+    <blockquote>“We’re all just looking for something real with someone who gets us.”<cite>— Alison Wonderland</cite></blockquote>
+    <a class="button secondary" href="#booking">Find Your Ocean Moment</a>
   </div>
 </section>
 <section id="amenities">
   <div class="container">
     <div class="section-heading"><h2>More underwater. More wonder. More shell-to-ear magic.</h2><p>Wellness, whimsy, family options, and ocean-floor theatrics in one glowing SeaBnB.</p></div>
     <div class="feature-grid">
-      <article class="feature"><div class="icon">🪷</div><h3>Reef Massages</h3><p>Massages from actual mermaids! Ocean-sound relaxation for your mind, body, and suspiciously tense shoulders.</p></article>
+      <article class="feature"><div class="icon">🪷</div><h3>Reef Massages</h3><p>Ocean-sound relaxation rituals for your mind, body, and suspiciously tense shoulders.</p></article>
       <article class="feature"><div class="icon">🥗</div><h3>Vegan Food</h3><p>Plant-forward meals styled with color, texture, protein, fiber, and joy without sounding like homework.</p></article>
-      <article class="feature"><div class="icon">🧜‍♀️</div><h3>Mermaid Babysits</h3><p>Mermaids will literally babysit your kids at no extra charge! Story hours, shell crafts, sea songs, and reef games while adults exhale.</p></article>
-      <article class="feature"><div class="icon">🦈</div><h3>Shark Watching</h3><p>Watch shark attacks safely from the panoramic reef lounge. Very dramatic. Very safe. Emotionally wet.</p></article>
-      <article class="feature"><div class="icon">🐚</div><h3>Listen to the Sea</h3><p>Seashell listening stations tucked into nooks so guests can hear the ocean say, “you’re doing amazing, sweetie.”</p></article>
-      <article class="feature"><div class="icon">🌈</div><h3>PLUR Bracelets</h3><p>Peace, love, unity, respect, and tiny glowing bracelets for your underwater rave heart. Kandi, but make it kelp.</p></article>
+      <article class="feature"><div class="icon">🧜‍♀️</div><h3>Mermaid Babysits</h3><p>Kid-friendly story hours, shell crafts, sea songs, and reef games while adults exhale.</p></article>
+      <article class="feature"><div class="icon">🦈</div><h3>Shark Watching</h3><p>Front-row seats to ocean drama, safely behind luxury glass and theatrical lighting.</p></article>
+      <article class="feature"><div class="icon">🐚</div><h3>Listen to the Sea</h3><p>Seashell listening stations tucked into nooks for little moments of hush and wonder.</p></article>
+      <article class="feature"><div class="icon">🌈</div><h3>PLUR Bracelets</h3><p>Peace, love, unity, respect, and tiny glowing bracelets for your underwater rave heart.</p></article>
       <article class="feature"><div class="icon">🪸</div><h3>Coral Corners</h3><p>Photo-friendly reef alcoves with glowing coral, sea glass, soft blue shadows, and sparkle.</p></article>
-      <article class="feature"><div class="icon">🫧</div><h3>Bubble Hour</h3><p>Protein drinks, hot chocolate, tiny snacks, and a strangely serious commitment to bubbles. We do not apologize for the bubbles.</p></article>
+      <article class="feature"><div class="icon">🫧</div><h3>Bubble Hour</h3><p>Mocktails, mineral water, tiny snacks, and a strangely serious commitment to bubbles.</p></article>
     </div>
   </div>
 </section>
@@ -554,9 +319,9 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
   <div class="container">
     <div class="section-heading"><h2>Choose your underwater suite.</h2><p>Each room is designed like a different dream the ocean had after midnight.</p></div>
     <div class="suite-grid">
-      <article class="suite"><div class="suite-photo s1"><span>Most magical</span></div><div class="suite-content"><h3>Mermaid Magic Suite (Members Only)</h3><p>Have you ever wondered what is underneath the spirulina?</p><strong>$299 / night</strong></div></article>
-      <article class="suite"><div class="suite-photo s2"><span>Most dramatic</span></div><div class="suite-content"><h3>Shark Week IRL</h3><p>Floor-to-ceiling ocean-view drama with apex predator ambiance and cozy lounge seating.</p><strong>$349 / night</strong></div></article>
-      <article class="suite"><div class="suite-photo s3"><span>Most serene</span></div><div class="suite-content"><h3> Coral Cave</h3><p>A glowing retreat for deep sleep, soft music, shell listening, and pretending your phone does not exist, corals all around.</p><strong>$329 / night</strong></div></article>
+      <article class="suite"><div class="suite-photo s1"><span>Most magical</span></div><div class="suite-content"><h3>Mermaid Grotto Suite</h3><p>Velvet blues, shell glow, soft linens, and a bath that looks like a secret cave from a fairy tale.</p><strong>$299 / night</strong></div></article>
+      <article class="suite"><div class="suite-photo s2"><span>Most dramatic</span></div><div class="suite-content"><h3>Shark Observatory</h3><p>Floor-to-ceiling ocean-view drama with apex predator ambiance and cozy lounge seating.</p><strong>$349 / night</strong></div></article>
+      <article class="suite"><div class="suite-photo s3"><span>Most serene</span></div><div class="suite-content"><h3>Bioluminescent Cave</h3><p>A glowing retreat for deep sleep, soft music, shell listening, and pretending your phone does not exist.</p><strong>$329 / night</strong></div></article>
     </div>
   </div>
 </section>
@@ -564,7 +329,7 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
   <div class="container">
     <div class="section-heading"><h2>Not just lodging. A whole underwater mood.</h2><p>Pick your level of ocean fantasy, from cozy wellness to shark documentary chaos.</p></div>
     <div class="experience-grid">
-      <div class="experience-panel"><h3>Signature SeaBnB Experiences</h3><ul><li><strong>Reef Reset Massage:</strong> warm towels, ocean soundscapes, and post-massage hot chocolate.</li><li><strong>Vegan Mermaid Breakfast:</strong> colorful plant-based plates built with texture, comfort, and balance.</li><li><strong>Mermaid Babysitting:</strong> crafts, songs, storytime, sea creature games, and supervised reef magic.</li><li><strong>Shell Listening Ritual:</strong> pick a shell, hear the sea, make a wish, pretend it was therapy.</li><li><strong>Shark Watch Hour:</strong> dramatic viewing lounge, mocktails, and educational bite-sized ocean facts.</li></ul></div>
+      <div class="experience-panel"><h3>Signature SeaBnB Experiences</h3><ul><li><strong>Reef Reset Massage:</strong> warm towels, ocean soundscapes, and post-massage herbal tea.</li><li><strong>Vegan Mermaid Breakfast:</strong> colorful plant-based plates built with texture, comfort, and balance.</li><li><strong>Mermaid Babysitting:</strong> crafts, songs, storytime, sea creature games, and supervised reef magic.</li><li><strong>Shell Listening Ritual:</strong> pick a shell, hear the sea, make a wish, pretend it was therapy.</li><li><strong>Shark Watch Hour:</strong> dramatic viewing lounge, mocktails, and educational bite-sized ocean facts.</li></ul></div>
       <div class="experience-panel"><h3>Styled with food smarts</h3><p>No lecture voice. Just colorful, satisfying vegan food with enough protein, fiber, crunch, creaminess, and fun to make your body feel invited to the party.</p><div class="pill-row"><span class="pill">Plant-forward</span><span class="pill">Colorful plates</span><span class="pill">Cozy snacks</span><span class="pill">Joyful eating</span><span class="pill">Texture magic</span></div></div>
     </div>
   </div>
@@ -574,8 +339,8 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
     <div class="story-box">
       <div class="section-heading"><h2>Book the SeaBnB <3</h2></div>
       <div class="story">
-        <p><strong>The vibe:</strong> Mackenzie's Underwater Oasis is a experiential wellness retreat for people who want a stay that feels enchanted, restorative, family-friendly, and mildly unhinged in the best way.</p>
-        <p><strong>The stay:</strong> reef-lit bedrooms, coral garden, shell listening, PLUR bracelets, sea-glass decor, massages, vegan food, mermaid babysitting, and shark-attack viewing drama.</p>
+        <p><strong>The vibe:</strong> Mackenzie's Underwater Oasis is a theatrical wellness rental for people who want a stay that feels enchanted, restorative, family-friendly, and mildly unhinged in the best way.</p>
+        <p><strong>The stay:</strong> reef-lit bedrooms, coral garden, shell listening, PLUR bracelets, sea-glass decor, massages, vegan food, mermaid babysitting, and shark-viewing drama.</p>
         <p><strong>The promise:</strong> You leave moisturized, fed, amused, slightly more mythical, and possibly convinced a seashell gave you advice.</p>
       </div>
       <div class="pill-row"><span class="pill">Luxury SeaBnB</span><span class="pill">Massages</span><span class="pill">Mermaid babysitting</span><span class="pill">Vegan food</span><span class="pill">Coral garden</span></div>
@@ -585,17 +350,10 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
       <h3>Reserve the Oasis</h3>
       <p>Request dates, add your ocean extras, then confirm payment after availability is approved.</p>
       <form id="oasisForm">
-        <div class="form-row">
-          <div><label for="checkin">Check in</label><input id="checkin" type="text" placeholder="Select check-in" required></div>
-          <div><label for="checkout">Check out</label><input id="checkout" type="text" placeholder="Select check-out" required></div>
-        </div>
-        <div class="calendar-help">
-          <span class="calendar-chip available">Available dates are selectable</span>
-          <span class="calendar-chip booked">Booked dates are grayed out</span>
-        </div>
+        <div class="form-row"><div><label for="checkin">Check in</label><input id="checkin" type="date" required></div><div><label for="checkout">Check out</label><input id="checkout" type="date" required></div></div>
         <div><label for="guests">Guests</label><select id="guests"><option>1 guest</option><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option></select></div>
         <div><label for="suite">Suite fantasy</label><select id="suite"><option>Mermaid Grotto Suite</option><option>Shark Observatory</option><option>Bioluminescent Cave</option><option>Surprise me, sea witch</option></select></div>
-        <div><label>Ocean extras</label><div class="checkbox-grid"><label class="check-card"><input type="checkbox" value="Massage"> Massage</label><label class="check-card"><input type="checkbox" value="Vegan meals"> Vegan meals</label><label class="check-card"><input type="checkbox" value="Mermaid babysitting"> Mermaid babysitting, literally free</label><label class="check-card"><input type="checkbox" value="PLUR bracelets"> PLUR bracelets</label><label class="check-card"><input type="checkbox" value="Shell listening"> Shell listening</label><label class="check-card"><input type="checkbox" value="Shark watch"> Shark watch</label></div></div>
+        <div><label>Ocean extras</label><div class="checkbox-grid"><label class="check-card"><input type="checkbox" value="Massage"> Massage</label><label class="check-card"><input type="checkbox" value="Vegan meals"> Vegan meals</label><label class="check-card"><input type="checkbox" value="Mermaid babysitting"> Mermaid babysitting</label><label class="check-card"><input type="checkbox" value="PLUR bracelets"> PLUR bracelets</label><label class="check-card"><input type="checkbox" value="Shell listening"> Shell listening</label><label class="check-card"><input type="checkbox" value="Shark watch"> Shark watch</label></div></div>
         <div><label for="name">Name</label><input id="name" type="text" placeholder="Captain of the party" required></div>
         <div><label for="email">Email</label><input id="email" type="email" placeholder="you@oceanmail.com" required></div>
         <div><label for="notes">Notes</label><textarea id="notes" placeholder="Kids' ages, massage requests, vegan food preferences, mermaid topics, shark fear level, etc."></textarea></div>
@@ -624,216 +382,42 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
     <div><p>contact@mackenziesunderwateroasis.com</p><div class="email-box"><input type="email" placeholder="Join the ocean list"><button class="button tiny">Join 🐚</button></div></div>
   </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
-const nightlyRate = 299;
-const cleaningFee = 85;
-const AVAILABILITY_URL = "https://script.google.com/macros/s/AKfycbyOAZr2zFzirv4Yvc2eSy-LXV67zf-irJAV3pl5QMQSbtPJ9_dbUlfQH3kSx1N3GIT4/exec";
-
-const checkin = document.getElementById('checkin');
-const checkout = document.getElementById('checkout');
-const nightsEl = document.getElementById('nights');
-const totalEl = document.getElementById('total');
-const formMessage = document.getElementById('formMessage');
-
-let bookedDates = [];
-let checkinPicker;
-let checkoutPicker;
-
-document.getElementById('year').textContent = new Date().getFullYear();
-
-function todayISO(){
-  return new Date().toISOString().slice(0,10);
-}
-
-function parseLocalDate(value){
-  if(!value) return null;
-  const [year, month, day] = value.split("-").map(Number);
-  return new Date(year, month - 1, day);
-}
-
-function formatDateForDisplay(value){
-  const d = parseLocalDate(value);
-  if(!d) return value;
-  return d.toLocaleDateString(undefined, {month:"short", day:"numeric", year:"numeric"});
-}
-
+const nightlyRate=299;
+const cleaningFee=85;
+const checkin=document.getElementById('checkin');
+const checkout=document.getElementById('checkout');
+const nightsEl=document.getElementById('nights');
+const totalEl=document.getElementById('total');
+const formMessage=document.getElementById('formMessage');
+document.getElementById('year').textContent=new Date().getFullYear();
 function calculateTotal(){
-  const start = parseLocalDate(checkin.value);
-  const end = parseLocalDate(checkout.value);
-
-  if(!start || !end){
-    nightsEl.textContent = "0";
-    totalEl.textContent = "$0";
-    return;
-  }
-
-  const diff = Math.round((end - start) / (1000 * 60 * 60 * 24));
-  const nights = diff > 0 ? diff : 0;
-  const total = nights ? nights * nightlyRate + cleaningFee : 0;
-
-  nightsEl.textContent = nights;
-  totalEl.textContent = `$${total.toLocaleString()}`;
+ const start=new Date(checkin.value);
+ const end=new Date(checkout.value);
+ const diff=Math.round((end-start)/(1000*60*60*24));
+ const nights=diff>0?diff:0;
+ const total=nights?nights*nightlyRate+cleaningFee:0;
+ nightsEl.textContent=nights;
+ totalEl.textContent=`$${total.toLocaleString()}`;
 }
-
-async function getBookedDates(){
-  const res = await fetch(`${AVAILABILITY_URL}?mode=booked&_=${Date.now()}`);
-  const text = await res.text();
-
-  let data;
-  try{
-    data = JSON.parse(text);
-  }catch(err){
-    throw new Error("The availability script did not return JSON. Redeploy the Apps Script as a Web App.");
-  }
-
-  if(!data.ok && data.error){
-    throw new Error(data.error);
-  }
-
-  return data.bookedDates || data.unavailableDates || [];
-}
-
-async function checkAvailability(){
-  if(!checkin.value || !checkout.value) return;
-
-  formMessage.textContent = "Checking reef availability...";
-  formMessage.style.color = "var(--muted)";
-
-  try{
-    const res = await fetch(`${AVAILABILITY_URL}?mode=check&checkin=${encodeURIComponent(checkin.value)}&checkout=${encodeURIComponent(checkout.value)}&_=${Date.now()}`);
-    const data = await res.json();
-
-    if(data.available){
-      formMessage.textContent = `Good news: ${formatDateForDisplay(checkin.value)} to ${formatDateForDisplay(checkout.value)} is available.`;
-      formMessage.style.color = "#9dffe0";
-    }else{
-      formMessage.textContent = "Those dates are already booked or pending. Please choose different dates.";
-      formMessage.style.color = "#ffd0c8";
-    }
-
-    return data.available;
-  }catch(error){
-    formMessage.textContent = "I could not check availability right now. Please try again in a moment.";
-    formMessage.style.color = "#ffd0c8";
-    return false;
-  }
-}
-
-async function initSeaCalendar(){
-  formMessage.textContent = "SeaBnB availability...";
-  formMessage.style.color = "var(--muted)";
-
-  try{
-    bookedDates = await getBookedDates();
-
-    const pickerOptions = {
-      dateFormat: "Y-m-d",
-      minDate: "today",
-      disable: bookedDates,
-      altInput: true,
-      altFormat: "m/d/Y",
-      allowInput: false,
-      onChange: function(){
-        calculateTotal();
-        checkAvailability();
-      }
-    };
-
-    checkinPicker = flatpickr(checkin, {
-      ...pickerOptions,
-      onChange: function(selectedDates, dateStr){
-        if(checkoutPicker && dateStr){
-          checkoutPicker.set("minDate", dateStr);
-        }
-        calculateTotal();
-        checkAvailability();
-      }
-    });
-
-    checkoutPicker = flatpickr(checkout, {
-      ...pickerOptions,
-      onChange: function(){
-        calculateTotal();
-        checkAvailability();
-      }
-    });
-
-    formMessage.textContent = "Already booked dates are grayed out in the calendar.";
-    formMessage.style.color = "#9dffe0";
-  }catch(error){
-    formMessage.textContent = "Calendar availability could not load. You can still request dates, but availability will be checked on submit.";
-    formMessage.style.color = "#ffd0c8";
-  }
-}
-
-document.getElementById('oasisForm').addEventListener('submit', async function(e){
-  e.preventDefault();
-
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const guests = document.getElementById('guests').value;
-  const suite = document.getElementById('suite').value;
-  const notes = document.getElementById('notes').value.trim();
-  const extras = [...document.querySelectorAll('.check-card input:checked')].map(x => x.value).join(', ') || 'None selected';
-  const nights = Number(nightsEl.textContent);
-  const total = totalEl.textContent;
-
-  if(!checkin.value || !checkout.value || nights <= 0){
-    formMessage.textContent = 'Please choose valid check-in and check-out dates.';
-    formMessage.style.color = "#ffd0c8";
-    return;
-  }
-
-  const available = await checkAvailability();
-  if(!available) return;
-
-  formMessage.textContent = "Sending your booking request and placing those dates on pending...";
-  formMessage.style.color = "var(--muted)";
-
-  try{
-    const params = new URLSearchParams({
-      mode: "book",
-      checkin: checkin.value,
-      checkout: checkout.value,
-      name,
-      email,
-      guests,
-      suite,
-      extras,
-      nights: String(nights),
-      total,
-      notes
-    });
-
-    const res = await fetch(`${AVAILABILITY_URL}?${params.toString()}`);
-    const data = await res.json();
-
-    if(!data.ok){
-      formMessage.textContent = data.message || "Those dates could not be booked. Please try another date.";
-      formMessage.style.color = "#ffd0c8";
-      return;
-    }
-
-    formMessage.textContent = "Request sent! Those dates are now pending. Mackenzie will follow up with payment details.";
-    formMessage.style.color = "#9dffe0";
-
-    bookedDates = await getBookedDates();
-    if(checkinPicker) checkinPicker.set("disable", bookedDates);
-    if(checkoutPicker) checkoutPicker.set("disable", bookedDates);
-  }catch(error){
-    formMessage.textContent = "The request could not be sent right now. Please try again in a moment.";
-    formMessage.style.color = "#ffd0c8";
-  }
+checkin.addEventListener('change',calculateTotal);
+checkout.addEventListener('change',calculateTotal);
+document.getElementById('oasisForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ const name=document.getElementById('name').value.trim();
+ const email=document.getElementById('email').value.trim();
+ const guests=document.getElementById('guests').value;
+ const suite=document.getElementById('suite').value;
+ const notes=document.getElementById('notes').value.trim();
+ const extras=[...document.querySelectorAll('.check-card input:checked')].map(x=>x.value).join(', ') || 'None selected';
+ const nights=nightsEl.textContent;
+ const total=totalEl.textContent;
+ if(!checkin.value||!checkout.value||Number(nights)<=0){formMessage.textContent='Please choose valid check-in and check-out dates.';return;}
+ const subject=encodeURIComponent("Booking Request for Mackenzie's Underwater Oasis SeaBnB");
+ const body=encodeURIComponent(`Hi Mackenzie! I would like to request a stay at Mackenzie's Underwater Oasis.\n\nName: ${name}\nEmail: ${email}\nCheck in: ${checkin.value}\nCheck out: ${checkout.value}\nGuests: ${guests}\nSuite: ${suite}\nOcean extras: ${extras}\nNights: ${nights}\nEstimated total: ${total}\nNotes: ${notes}\n\nThank you!`);
+ window.location.href=`mailto:contact@mackenziesunderwateroasis.com?subject=${subject}&body=${body}`;
+ formMessage.textContent='Opening your email app with the SeaBnB booking request.';
 });
-
-initSeaCalendar();
 </script>
-
-<a class="mobile-bookbar" href="#booking" aria-label="Book your stay">
-  <span>$299/night<small>Check live availability</small></span>
-  <span class="button">Book 🐚</span>
-</a>
-
 </body>
 </html>
