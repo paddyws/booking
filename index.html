@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <style>
 :root{
   --abyss:#00111d;
@@ -321,47 +322,74 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
 }
 
 
-/* LIVE BOOKING + AVAILABILITY */
-.availability-status{
-  border-radius:20px;
-  padding:14px 16px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.11);
-  color:var(--muted);
-  font-size:.92rem;
-  line-height:1.45;
+/* SEA CALENDAR */
+.flatpickr-calendar{
+  background:rgba(3,35,57,.98);
+  border:1px solid rgba(127,247,255,.34);
+  box-shadow:0 24px 80px rgba(0,0,0,.55),0 0 32px rgba(127,247,255,.16);
+  color:var(--text);
+  border-radius:24px;
+  overflow:hidden;
 }
 
-.availability-status.good{
-  color:#bfffe5;
-  border-color:rgba(103,232,165,.38);
-  background:rgba(103,232,165,.08);
-  box-shadow:0 0 22px rgba(103,232,165,.10);
+.flatpickr-months,
+.flatpickr-weekdays{
+  background:rgba(0,169,199,.12);
 }
 
-.availability-status.bad{
-  color:#ffd1c7;
-  border-color:rgba(255,143,115,.38);
-  background:rgba(255,143,115,.08);
-  box-shadow:0 0 22px rgba(255,143,115,.10);
+.flatpickr-current-month,
+.flatpickr-monthDropdown-months,
+.flatpickr-weekday{
+  color:#e9feff !important;
+  font-weight:900;
 }
 
-.availability-status.checking{
-  color:#c8fbff;
-  border-color:rgba(127,247,255,.28);
-  background:rgba(127,247,255,.08);
+.flatpickr-day{
+  color:#e9feff;
+  border-radius:12px;
 }
 
-.question-box{
+.flatpickr-day:hover,
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange{
+  background:#00a9c7 !important;
+  border-color:#7ff7ff !important;
+  color:white !important;
+  box-shadow:0 0 16px rgba(127,247,255,.28);
+}
+
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover{
+  color:rgba(255,255,255,.25) !important;
+  background:rgba(255,143,115,.14) !important;
+  border-color:rgba(255,143,115,.22) !important;
+  text-decoration:line-through;
+  cursor:not-allowed;
+}
+
+.flatpickr-day.today{
+  border-color:#9dffe0;
+}
+
+.calendar-help{
   display:grid;
-  gap:12px;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:8px;
+  font-size:.82rem;
+  color:var(--muted);
 }
 
-.booking-note{
-  color:var(--muted);
-  font-size:.86rem;
-  line-height:1.5;
+.calendar-chip{
+  padding:8px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
 }
+
+.calendar-chip.available::before{content:"● ";color:#9dffe0}
+.calendar-chip.booked::before{content:"● ";color:#ff8f73}
 
 </style>
 </head>
@@ -476,90 +504,27 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
       <div class="pill-row"><span class="pill">Luxury SeaBnB</span><span class="pill">Massages</span><span class="pill">Mermaid babysitting</span><span class="pill">Vegan food</span><span class="pill">Coral garden</span></div>
     </div>
     <aside class="booking-card">
-      <div class="price"><div><strong>$299</strong> <span>/ night</span></div><span>★ Live availability</span></div>
+      <div class="price"><div><strong>$299</strong> <span>/ night</span></div><span>★ 4.98</span></div>
       <h3>Reserve the Oasis</h3>
-      <p>Pick your dates first. The site checks the SeaBnB availability sheet before it lets the request through.</p>
+      <p>Request dates, add your ocean extras, then confirm payment after availability is approved.</p>
       <form id="oasisForm">
         <div class="form-row">
-          <div>
-            <label for="checkin">Check in</label>
-            <input id="checkin" type="date" required>
-          </div>
-          <div>
-            <label for="checkout">Check out</label>
-            <input id="checkout" type="date" required>
-          </div>
+          <div><label for="checkin">Check in</label><input id="checkin" type="text" placeholder="Select check-in" required></div>
+          <div><label for="checkout">Check out</label><input id="checkout" type="text" placeholder="Select check-out" required></div>
         </div>
-
-        <div id="availabilityStatus" class="availability-status">
-          Choose your check-in and check-out dates to check availability.
+        <div class="calendar-help">
+          <span class="calendar-chip available">Available dates are selectable</span>
+          <span class="calendar-chip booked">Booked dates are grayed out</span>
         </div>
-
-        <div>
-          <label for="guests">Guests</label>
-          <select id="guests">
-            <option>1 guest</option>
-            <option>2 guests</option>
-            <option>3 guests</option>
-            <option>4 guests</option>
-            <option>5 guests</option>
-            <option>6 guests</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="suite">Suite fantasy</label>
-          <select id="suite">
-            <option>Mermaid Magic Suite</option>
-            <option>Shark Week IRL</option>
-            <option>Coral Cave</option>
-            <option>Surprise me, sea witch</option>
-          </select>
-        </div>
-
-        <div>
-          <label>Ocean extras</label>
-          <div class="checkbox-grid">
-            <label class="check-card"><input type="checkbox" value="Massage"> Massage</label>
-            <label class="check-card"><input type="checkbox" value="Vegan meals"> Vegan meals</label>
-            <label class="check-card"><input type="checkbox" value="Mermaid babysitting"> Mermaid babysitting, literally free</label>
-            <label class="check-card"><input type="checkbox" value="PLUR bracelets"> PLUR bracelets</label>
-            <label class="check-card"><input type="checkbox" value="Shell listening"> Shell listening</label>
-            <label class="check-card"><input type="checkbox" value="Shark watch"> Shark watch</label>
-          </div>
-        </div>
-
-        <div class="question-box">
-          <div>
-            <label for="name">Name</label>
-            <input id="name" type="text" placeholder="Captain of the party" required>
-          </div>
-
-          <div>
-            <label for="email">Email</label>
-            <input id="email" type="email" placeholder="you@oceanmail.com" required>
-          </div>
-
-          <div>
-            <label for="phone">Phone number</label>
-            <input id="phone" type="tel" placeholder="Optional, for booking questions">
-          </div>
-
-          <div>
-            <label for="questions">Questions / special requests</label>
-            <textarea id="questions" placeholder="Ask anything: kids' ages, food needs, massage requests, mermaid topics, shark fear level, accessibility, etc."></textarea>
-          </div>
-        </div>
-
-        <div class="total-box">
-          <div class="total-line"><span>Nights</span><span id="nights">0</span></div>
-          <div class="total-line"><span>Nightly rate</span><span>$299</span></div>
-          <div class="total-line"><span>Cleaning + shell polishing</span><span>$85</span></div>
-          <div class="total-line final"><span>Estimated total</span><span id="total">$0</span></div>
-        </div>
-
-        <button class="button" id="submitBooking" type="submit">Check Availability & Send Request 🐚</button>
-        <p class="booking-note">No public email address appears on the page. The request is sent through the booking script after dates pass the availability check.</p>
+        <div><label for="guests">Guests</label><select id="guests"><option>1 guest</option><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option></select></div>
+        <div><label for="suite">Suite fantasy</label><select id="suite"><option>Mermaid Grotto Suite</option><option>Shark Observatory</option><option>Bioluminescent Cave</option><option>Surprise me, sea witch</option></select></div>
+        <div><label>Ocean extras</label><div class="checkbox-grid"><label class="check-card"><input type="checkbox" value="Massage"> Massage</label><label class="check-card"><input type="checkbox" value="Vegan meals"> Vegan meals</label><label class="check-card"><input type="checkbox" value="Mermaid babysitting"> Mermaid babysitting, literally free</label><label class="check-card"><input type="checkbox" value="PLUR bracelets"> PLUR bracelets</label><label class="check-card"><input type="checkbox" value="Shell listening"> Shell listening</label><label class="check-card"><input type="checkbox" value="Shark watch"> Shark watch</label></div></div>
+        <div><label for="name">Name</label><input id="name" type="text" placeholder="Captain of the party" required></div>
+        <div><label for="email">Email</label><input id="email" type="email" placeholder="you@oceanmail.com" required></div>
+        <div><label for="notes">Notes</label><textarea id="notes" placeholder="Kids' ages, massage requests, vegan food preferences, mermaid topics, shark fear level, etc."></textarea></div>
+        <div class="total-box"><div class="total-line"><span>Nights</span><span id="nights">0</span></div><div class="total-line"><span>Nightly rate</span><span>$299</span></div><div class="total-line"><span>Cleaning + shell polishing</span><span>$85</span></div><div class="total-line final"><span>Estimated total</span><span id="total">$0</span></div></div>
+        <button class="button" type="submit">Send Booking Request</button>
+        <a class="button secondary" href="https://buy.stripe.com/REPLACE_WITH_YOUR_STRIPE_PAYMENT_LINK" target="_blank" rel="noopener">Pay Deposit</a>
         <p id="formMessage" style="color:var(--muted);font-size:.9rem"></p>
       </form>
     </aside>
@@ -582,162 +547,210 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
     <div><p>contact@mackenziesunderwateroasis.com</p><div class="email-box"><input type="email" placeholder="Join the ocean list"><button class="button tiny">Join 🐚</button></div></div>
   </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
-const AVAILABILITY_URL = "https://script.google.com/macros/s/AKfycbyOAZr2zFzirv4Yvc2eSy-LXV67zf-irJAV3pl5QMQSbtPJ9_dbUlfQH3kSx1N3GIT4/exec";
 const nightlyRate = 299;
 const cleaningFee = 85;
+const AVAILABILITY_URL = "https://script.google.com/macros/s/AKfycbyOAZr2zFzirv4Yvc2eSy-LXV67zf-irJAV3pl5QMQSbtPJ9_dbUlfQH3kSx1N3GIT4/exec";
 
 const checkin = document.getElementById('checkin');
 const checkout = document.getElementById('checkout');
 const nightsEl = document.getElementById('nights');
 const totalEl = document.getElementById('total');
 const formMessage = document.getElementById('formMessage');
-const availabilityStatus = document.getElementById('availabilityStatus');
-const submitBooking = document.getElementById('submitBooking');
+
+let bookedDates = [];
+let checkinPicker;
+let checkoutPicker;
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
-let lastAvailability = null;
-let availabilityTimer = null;
+function todayISO(){
+  return new Date().toISOString().slice(0,10);
+}
+
+function parseLocalDate(value){
+  if(!value) return null;
+  const [year, month, day] = value.split("-").map(Number);
+  return new Date(year, month - 1, day);
+}
+
+function formatDateForDisplay(value){
+  const d = parseLocalDate(value);
+  if(!d) return value;
+  return d.toLocaleDateString(undefined, {month:"short", day:"numeric", year:"numeric"});
+}
 
 function calculateTotal(){
-  const start = new Date(checkin.value);
-  const end = new Date(checkout.value);
+  const start = parseLocalDate(checkin.value);
+  const end = parseLocalDate(checkout.value);
+
+  if(!start || !end){
+    nightsEl.textContent = "0";
+    totalEl.textContent = "$0";
+    return;
+  }
+
   const diff = Math.round((end - start) / (1000 * 60 * 60 * 24));
   const nights = diff > 0 ? diff : 0;
   const total = nights ? nights * nightlyRate + cleaningFee : 0;
 
   nightsEl.textContent = nights;
   totalEl.textContent = `$${total.toLocaleString()}`;
-  return nights;
 }
 
-function setAvailabilityMessage(message, type = ""){
-  availabilityStatus.className = `availability-status ${type}`.trim();
-  availabilityStatus.textContent = message;
+async function getBookedDates(){
+  const res = await fetch(`${AVAILABILITY_URL}?mode=booked&_=${Date.now()}`);
+  const text = await res.text();
+
+  let data;
+  try{
+    data = JSON.parse(text);
+  }catch(err){
+    throw new Error("The availability script did not return JSON. Redeploy the Apps Script as a Web App.");
+  }
+
+  if(!data.ok && data.error){
+    throw new Error(data.error);
+  }
+
+  return data.bookedDates || data.unavailableDates || [];
 }
 
 async function checkAvailability(){
-  const nights = calculateTotal();
-  lastAvailability = null;
+  if(!checkin.value || !checkout.value) return;
 
-  if(!checkin.value || !checkout.value){
-    setAvailabilityMessage("Choose your check-in and check-out dates to check availability.");
-    return null;
-  }
-
-  if(nights <= 0){
-    setAvailabilityMessage("Checkout must be after check-in.", "bad");
-    return null;
-  }
-
-  setAvailabilityMessage("Checking the SeaBnB calendar...", "checking");
+  formMessage.textContent = "Checking reef calendar availability...";
+  formMessage.style.color = "var(--muted)";
 
   try{
-    const url = `${AVAILABILITY_URL}?checkin=${encodeURIComponent(checkin.value)}&checkout=${encodeURIComponent(checkout.value)}`;
-    const res = await fetch(url);
+    const res = await fetch(`${AVAILABILITY_URL}?mode=check&checkin=${encodeURIComponent(checkin.value)}&checkout=${encodeURIComponent(checkout.value)}&_=${Date.now()}`);
     const data = await res.json();
 
-    lastAvailability = data;
-
     if(data.available){
-      setAvailabilityMessage(`Those dates are open! ${nights} night${nights === 1 ? "" : "s"} available.`, "good");
+      formMessage.textContent = `Good news: ${formatDateForDisplay(checkin.value)} to ${formatDateForDisplay(checkout.value)} is available.`;
+      formMessage.style.color = "#9dffe0";
     }else{
-      const dates = Array.isArray(data.unavailableDates) && data.unavailableDates.length
-        ? ` Blocked date(s): ${data.unavailableDates.join(", ")}.`
-        : "";
-      setAvailabilityMessage(`Those dates are already booked or pending.${dates} Please choose different dates.`, "bad");
+      formMessage.textContent = "Those dates are already booked or pending. Please choose different dates.";
+      formMessage.style.color = "#ffd0c8";
     }
 
-    return data;
+    return data.available;
   }catch(error){
-    console.error(error);
-    setAvailabilityMessage("I could not check availability right now. Please try again in a moment.", "bad");
-    return null;
+    formMessage.textContent = "I could not check availability right now. Please try again in a moment.";
+    formMessage.style.color = "#ffd0c8";
+    return false;
   }
 }
 
-function scheduleAvailabilityCheck(){
-  calculateTotal();
-  clearTimeout(availabilityTimer);
-  availabilityTimer = setTimeout(checkAvailability, 450);
-}
+async function initSeaCalendar(){
+  formMessage.textContent = "Loading live SeaBnB availability...";
+  formMessage.style.color = "var(--muted)";
 
-checkin.addEventListener('change', scheduleAvailabilityCheck);
-checkout.addEventListener('change', scheduleAvailabilityCheck);
+  try{
+    bookedDates = await getBookedDates();
+
+    const pickerOptions = {
+      dateFormat: "Y-m-d",
+      minDate: "today",
+      disable: bookedDates,
+      altInput: true,
+      altFormat: "m/d/Y",
+      allowInput: false,
+      onChange: function(){
+        calculateTotal();
+        checkAvailability();
+      }
+    };
+
+    checkinPicker = flatpickr(checkin, {
+      ...pickerOptions,
+      onChange: function(selectedDates, dateStr){
+        if(checkoutPicker && dateStr){
+          checkoutPicker.set("minDate", dateStr);
+        }
+        calculateTotal();
+        checkAvailability();
+      }
+    });
+
+    checkoutPicker = flatpickr(checkout, {
+      ...pickerOptions,
+      onChange: function(){
+        calculateTotal();
+        checkAvailability();
+      }
+    });
+
+    formMessage.textContent = "Availability loaded. Booked dates are grayed out in the calendar.";
+    formMessage.style.color = "#9dffe0";
+  }catch(error){
+    formMessage.textContent = "Calendar availability could not load. You can still request dates, but availability will be checked on submit.";
+    formMessage.style.color = "#ffd0c8";
+  }
+}
 
 document.getElementById('oasisForm').addEventListener('submit', async function(e){
   e.preventDefault();
 
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
-  const phone = document.getElementById('phone').value.trim();
   const guests = document.getElementById('guests').value;
   const suite = document.getElementById('suite').value;
-  const questions = document.getElementById('questions').value.trim();
-  const extras = [...document.querySelectorAll('.check-card input:checked')].map(x => x.value);
+  const notes = document.getElementById('notes').value.trim();
+  const extras = [...document.querySelectorAll('.check-card input:checked')].map(x => x.value).join(', ') || 'None selected';
   const nights = Number(nightsEl.textContent);
   const total = totalEl.textContent;
 
-  formMessage.textContent = "";
-
   if(!checkin.value || !checkout.value || nights <= 0){
-    formMessage.textContent = "Please choose valid check-in and check-out dates.";
+    formMessage.textContent = 'Please choose valid check-in and check-out dates.';
+    formMessage.style.color = "#ffd0c8";
     return;
   }
 
-  if(!name || !email){
-    formMessage.textContent = "Please add your name and email.";
-    return;
-  }
+  const available = await checkAvailability();
+  if(!available) return;
 
-  submitBooking.disabled = true;
-  submitBooking.textContent = "Checking the reef calendar...";
-
-  const availability = await checkAvailability();
-
-  if(!availability || !availability.available){
-    formMessage.textContent = "Those dates are not available, so the request was not sent.";
-    submitBooking.disabled = false;
-    submitBooking.textContent = "Check Availability & Send Request 🐚";
-    return;
-  }
-
-  const payload = {
-    checkin: checkin.value,
-    checkout: checkout.value,
-    nights,
-    estimatedTotal: total,
-    name,
-    email,
-    phone,
-    guests,
-    suite,
-    extras,
-    questions,
-    source: "Mackenzie's Underwater Oasis website"
-  };
+  formMessage.textContent = "Sending your booking request and placing those dates on pending...";
+  formMessage.style.color = "var(--muted)";
 
   try{
-    await fetch(AVAILABILITY_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {"Content-Type": "text/plain;charset=utf-8"},
-      body: JSON.stringify(payload)
+    const params = new URLSearchParams({
+      mode: "book",
+      checkin: checkin.value,
+      checkout: checkout.value,
+      name,
+      email,
+      guests,
+      suite,
+      extras,
+      nights: String(nights),
+      total,
+      notes
     });
 
-    setAvailabilityMessage("Request sent! These dates are now held as pending while the SeaBnB crew reviews them.", "good");
-    formMessage.textContent = "Booking request sent. Watch your inbox for the next step.";
-    this.reset();
-    calculateTotal();
+    const res = await fetch(`${AVAILABILITY_URL}?${params.toString()}`);
+    const data = await res.json();
+
+    if(!data.ok){
+      formMessage.textContent = data.message || "Those dates could not be booked. Please try another date.";
+      formMessage.style.color = "#ffd0c8";
+      return;
+    }
+
+    formMessage.textContent = "Request sent! Those dates are now pending. Mackenzie will follow up with payment details.";
+    formMessage.style.color = "#9dffe0";
+
+    bookedDates = await getBookedDates();
+    if(checkinPicker) checkinPicker.set("disable", bookedDates);
+    if(checkoutPicker) checkoutPicker.set("disable", bookedDates);
   }catch(error){
-    console.error(error);
-    formMessage.textContent = "The dates looked available, but the request could not be sent. Please try again.";
-  }finally{
-    submitBooking.disabled = false;
-    submitBooking.textContent = "Check Availability & Send Request 🐚";
+    formMessage.textContent = "The request could not be sent right now. Please try again in a moment.";
+    formMessage.style.color = "#ffd0c8";
   }
 });
+
+initSeaCalendar();
 </script>
 </body>
 </html>
