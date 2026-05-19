@@ -422,7 +422,7 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
       <h1>Mackenzie's Underwater Oasis</h1>
       <p>A complete SeaBnB where beach energy meets soft sheets, reef-lit massages, plant-based surprises, mermaid babysitters, a mermaid strip club! (deep sea creatures only), seashell listening, make-your-own bracelets, and front-row seats to real life shark attacks.</p>
       <div class="hero-actions"><a class="button" href="#booking">Book Your Sea Adventure 🐚</a><a class="button secondary" href="#garden">Enter the Coral Garden</a></div>
-      <div class="trust-row"><span>✓ Sleeps 6</span><span>✓ Free mermaid babysitting</span><span>✓ Vegan-coded meals</span><span>✓ Shark-view lounge</span></div>
+      <div class="trust-row"><span>✓ Sleeps 6</span><span>✓ Free mermaid babysitting</span><span>✓ Veggie meals</span><span>✓ Shark-view lounge</span></div>
     </div>
     <div class="hero-card">
       <div class="floating-card"><div><strong>Where mermaids vacation and kids get storytime.</strong><span>Listen to shells. Wander the reef. Sleep beneath the deep blue sea</span></div><a class="button" href="#booking">Reserve</a></div>
@@ -497,8 +497,8 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
     <div class="story-box">
       <div class="section-heading"><h2>Book the SeaBnB <3</h2></div>
       <div class="story">
-        <p><strong>The vibe:</strong> Mackenzie's Underwater Oasis is a theatrical wellness rental for people who want a stay that feels enchanted, restorative, family-friendly, and mildly unhinged in the best way.</p>
-        <p><strong>The stay:</strong> reef-lit bedrooms, coral garden, shell listening, PLUR bracelets, sea-glass decor, massages, vegan food, mermaid babysitting, and shark-viewing drama.</p>
+        <p><strong>The vibe:</strong> Mackenzie's Underwater Oasis is a experiential wellness retreat for people who want a stay that feels enchanted, restorative, family-friendly, and mildly unhinged in the best way.</p>
+        <p><strong>The stay:</strong> reef-lit bedrooms, coral garden, shell listening, PLUR bracelets, sea-glass decor, massages, vegan food, mermaid babysitting, and shark-attack viewing drama.</p>
         <p><strong>The promise:</strong> You leave moisturized, fed, amused, slightly more mythical, and possibly convinced a seashell gave you advice.</p>
       </div>
       <div class="pill-row"><span class="pill">Luxury SeaBnB</span><span class="pill">Massages</span><span class="pill">Mermaid babysitting</span><span class="pill">Vegan food</span><span class="pill">Coral garden</span></div>
@@ -620,7 +620,7 @@ async function getBookedDates(){
 async function checkAvailability(){
   if(!checkin.value || !checkout.value) return;
 
-  formMessage.textContent = "Checking reef calendar availability...";
+  formMessage.textContent = "Checking reef availability...";
   formMessage.style.color = "var(--muted)";
 
   try{
@@ -644,7 +644,7 @@ async function checkAvailability(){
 }
 
 async function initSeaCalendar(){
-  formMessage.textContent = "Loading live SeaBnB availability...";
+  formMessage.textContent = "SeaBnB availability...";
   formMessage.style.color = "var(--muted)";
 
   try{
@@ -682,7 +682,7 @@ async function initSeaCalendar(){
       }
     });
 
-    formMessage.textContent = "Availability loaded. Booked dates are grayed out in the calendar.";
+    formMessage.textContent = "Already booked dates are grayed out in the calendar.";
     formMessage.style.color = "#9dffe0";
   }catch(error){
     formMessage.textContent = "Calendar availability could not load. You can still request dates, but availability will be checked on submit.";
