@@ -34,12 +34,19 @@ body{
   font-family:Inter,system-ui,sans-serif;
   color:var(--text);
   overflow-x:hidden;
-  background:
-    radial-gradient(circle at 18% 7%,rgba(127,247,255,.20),transparent 24%),
-    radial-gradient(circle at 82% 12%,rgba(103,232,165,.18),transparent 26%),
-    radial-gradient(circle at 52% 92%,rgba(31,191,117,.16),transparent 32%),
-    linear-gradient(180deg,#00111d 0%,#03243a 34%,#064f73 72%,#047896 100%);
   min-height:100vh;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,190,255,.15) 0%,
+      rgba(0,120,180,.28) 22%,
+      rgba(0,50,90,.62) 58%,
+      rgba(0,8,20,.96) 100%
+    ),
+    url('oceanbg.png');
+  background-size:cover;
+  background-position:center top;
+  background-attachment:fixed;
 }
 body::before{
   content:"";
@@ -97,35 +104,72 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
 @media(max-width:1000px){.nav-links{display:none}.hero-grid,.booking-section,.experience-grid{grid-template-columns:1fr}.feature-grid,.garden-grid{grid-template-columns:repeat(2,1fr)}.suite-grid,.reviews{grid-template-columns:1fr 1fr}.booking-card{position:static}.hero-card{min-height:520px}.quote-strip{grid-template-columns:1fr}.quote-strip .button{width:max-content}}
 @media(max-width:650px){.suite-grid,.reviews,.feature-grid,.garden-grid,.form-row,.checkbox-grid{grid-template-columns:1fr}.section-heading{display:block}.section-heading p{margin-top:10px}.floating-card{flex-direction:column;align-items:flex-start}.logo-text strong{font-size:1.05rem}.logo-text span{font-size:.9rem}.hero-card{min-height:460px}.hero-card::before{font-size:4rem}.hero-card::after{font-size:4rem;right:34px}h1{font-size:3.05rem}.email-box{display:grid}}
 
-/* CUDI + QUOTE DUO */
+/* QUOTE CARDS */
 .quote-duo{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  margin-top:34px;
+  grid-template-columns:1.2fr 1fr 1fr;
+  gap:28px;
+  align-items:stretch;
+  margin-top:42px;
 }
-.quote-strip.cudi-card{
+
+.quote-duo .quote-strip{
   margin-top:0;
+  height:100%;
+  min-height:340px;
+  grid-template-columns:110px 1fr;
+  align-items:center;
+}
+
+.quote-duo .quote-strip:first-child{
   grid-template-columns:110px 1fr;
 }
-.quote-strip.cudi-card .jelly{
-  width:108px;
-  height:108px;
+
+.quote-duo .quote-strip .button{
+  display:none;
 }
-.quote-strip.cudi-card blockquote{
+
+.quote-duo .quote-strip blockquote{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  height:100%;
   font-family:Inter,system-ui,sans-serif;
-  font-size:clamp(1.05rem,2vw,1.5rem);
+  font-size:clamp(1rem,1.7vw,1.45rem);
   font-weight:800;
+  line-height:1.4;
 }
-.quote-strip.cudi-card cite{
+
+.quote-duo .quote-strip:first-child blockquote{
+  font-family:Cinzel,serif;
+  font-size:clamp(1.2rem,2vw,1.85rem);
+  line-height:1.32;
+}
+
+.quote-duo .quote-strip cite{
+  margin-top:18px;
   color:#9dffe0;
 }
+
+.quote-duo .quote-strip .jelly{
+  width:108px;
+  height:108px;
+  flex-shrink:0;
+}
+
 .quote-strip.chance-card{
   border-color:rgba(255,196,107,.36);
   background:linear-gradient(135deg,rgba(0,169,199,.13),rgba(255,196,107,.10));
 }
-@media(max-width:900px){
-  .quote-duo{grid-template-columns:1fr}
+
+@media(max-width:1100px){
+  .quote-duo{
+    grid-template-columns:1fr;
+  }
+
+  .quote-duo .quote-strip{
+    min-height:auto;
+  }
 }
 
 </style>
