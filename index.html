@@ -907,6 +907,7 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
 </head>
 <body>
 <audio id="oceanAudio" src="ocean.mp3" loop preload="auto"></audio>
+<audio id="musicAudio" src="Oasis.mp3" loop preload="auto"></audio>
 <button id="soundToggle" class="sound-toggle" type="button" aria-pressed="false">🌊 Ocean sounds</button>
 
 <div class="bubble" style="left:4%;width:24px;height:24px;animation-duration:14s"></div>
@@ -1268,43 +1269,46 @@ document.getElementById('oasisForm').addEventListener('submit', async function(e
 
 
 const oceanAudio = document.getElementById('oceanAudio');
+const musicAudio = document.getElementById('musicAudio');
 const soundToggle = document.getElementById('soundToggle');
-let oceanSoundOn = false;
+let audioOn = false;
 
-oceanAudio.volume = 0.35;
+oceanAudio.volume = 0.32;
+musicAudio.volume = 0.42;
 
-async function playOceanSounds(){
+async function playOasisAudio(){
   try{
-    await oceanAudio.play();
-    oceanSoundOn = true;
-    soundToggle.textContent = "🌊 Ocean sounds";
+    await Promise.all([oceanAudio.play(), musicAudio.play()]);
+    audioOn = true;
+    soundToggle.textContent = "🌊 Oasis Jukebox ";
     soundToggle.setAttribute("aria-pressed", "true");
   }catch(error){
-    oceanSoundOn = false;
-    soundToggle.textContent = "🌊 Ahh the sea";
+    audioOn = false;
+    soundToggle.textContent = "🌊 Start Oasis Jukebox";
     soundToggle.setAttribute("aria-pressed", "false");
   }
 }
 
-function pauseOceanSounds(){
+function pauseOasisAudio(){
   oceanAudio.pause();
-  oceanSoundOn = false;
-  soundToggle.textContent = "🌊 No more waves";
+  musicAudio.pause();
+  audioOn = false;
+  soundToggle.textContent = "🔇 Oasis jukebox off";
   soundToggle.setAttribute("aria-pressed", "false");
 }
 
 soundToggle.addEventListener('click', function(){
-  if(oceanSoundOn){
-    pauseOceanSounds();
+  if(audioOn){
+    pauseOasisAudio();
   }else{
-    playOceanSounds();
+    playOasisAudio();
   }
 });
 
-window.addEventListener('load', playOceanSounds);
+window.addEventListener('load', playOasisAudio);
 
 document.addEventListener('pointerdown', function startAudioOnce(){
-  if(!oceanSoundOn) playOceanSounds();
+  if(!audioOn) playOasisAudio();
   document.removeEventListener('pointerdown', startAudioOnce);
 }, {once:true});
 
