@@ -873,9 +873,42 @@ footer{padding:44px 0 130px;border-top:1px solid rgba(255,255,255,.09);color:var
   .quote-duo .quote-strip .jelly{margin:auto;}
 }
 
+
+
+/* OCEAN SOUND TOGGLE */
+.sound-toggle{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:1000;
+  width:auto;
+  padding:12px 16px;
+  border-radius:999px;
+  background:rgba(0,8,18,.88);
+  border:1px solid rgba(127,247,255,.28);
+  color:#e9feff;
+  font-weight:900;
+  cursor:pointer;
+  backdrop-filter:blur(16px);
+  box-shadow:0 14px 40px rgba(0,0,0,.38),0 0 18px rgba(127,247,255,.14);
+}
+.sound-toggle:hover{transform:translateY(-2px);}
+@media(max-width:760px){
+  .sound-toggle{
+    left:10px;
+    right:auto;
+    bottom:78px;
+    padding:10px 13px;
+    font-size:.82rem;
+  }
+}
+
 </style>
 </head>
 <body>
+<audio id="oceanAudio" src="ocean.mp3" loop preload="auto"></audio>
+<button id="soundToggle" class="sound-toggle" type="button" aria-pressed="false">🌊 Ocean sounds</button>
+
 <div class="bubble" style="left:4%;width:24px;height:24px;animation-duration:14s"></div>
 <div class="bubble" style="left:18%;width:14px;height:14px;animation-duration:10s"></div>
 <div class="bubble" style="left:36%;width:30px;height:30px;animation-duration:18s"></div>
@@ -1231,6 +1264,49 @@ document.getElementById('oasisForm').addEventListener('submit', async function(e
     formMessage.style.color = "#ffd0c8";
   }
 });
+
+
+
+const oceanAudio = document.getElementById('oceanAudio');
+const soundToggle = document.getElementById('soundToggle');
+let oceanSoundOn = false;
+
+oceanAudio.volume = 0.35;
+
+async function playOceanSounds(){
+  try{
+    await oceanAudio.play();
+    oceanSoundOn = true;
+    soundToggle.textContent = "🌊 Ocean sounds";
+    soundToggle.setAttribute("aria-pressed", "true");
+  }catch(error){
+    oceanSoundOn = false;
+    soundToggle.textContent = "🌊 Ahh the sea";
+    soundToggle.setAttribute("aria-pressed", "false");
+  }
+}
+
+function pauseOceanSounds(){
+  oceanAudio.pause();
+  oceanSoundOn = false;
+  soundToggle.textContent = "🌊 No more waves";
+  soundToggle.setAttribute("aria-pressed", "false");
+}
+
+soundToggle.addEventListener('click', function(){
+  if(oceanSoundOn){
+    pauseOceanSounds();
+  }else{
+    playOceanSounds();
+  }
+});
+
+window.addEventListener('load', playOceanSounds);
+
+document.addEventListener('pointerdown', function startAudioOnce(){
+  if(!oceanSoundOn) playOceanSounds();
+  document.removeEventListener('pointerdown', startAudioOnce);
+}, {once:true});
 
 initSeaCalendar();
 </script>
